@@ -1,0 +1,49 @@
+# sync-team.yml — keep your /team rules current with RazeowDev
+#
+# Copy this file into YOUR repo at .github/workflows/sync-team.yml
+# It checks weekly (and on manual trigger) whether the upstream rules changed,
+# and if so opens a PULL REQUEST in your repo with the diff — it never commits
+# directly. Rules are law: read the diff, then merge deliberately.
+#
+# Requires: "Allow GitHub Actions to create pull requests" enabled in
+# your repo Settings → Actions → General.
+
+name: Sync team rules
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"   # Mondays 02:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout own repo
+        uses: actions/checkout@v4
+
+      - name: Fetch upstream rules
+        run: |
+          git clone --depth 1 https://github.com/Razeow96/RazeowDev /tmp/RazeowDev
+          UPSTREAM_TAG=$(git -C /tmp/RazeowDev describe --tags --always 2>/dev/null || echo "latest")
+          echo "UPSTREAM_TAG=$UPSTREAM_TAG" >> "$GITHUB_ENV"
+          mkdir -p team
+          rsync -a --delete /tmp/RazeowDev/devteam/ team/devteam/
+          rsync -a --delete /tmp/RazeowDev/manager/ team/manager/
+
+      - name: Open PR if rules changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: team-rules-sync
+          commit-message: "team rules sync → ${{ env.UPSTREAM_TAG }}"
+          title: "Team rules update → ${{ env.UPSTREAM_TAG }}"
+          body: |
+            Upstream rule change detected in [RazeowDev](https://github.com/Razeow96/RazeowDev).
+
+            Review the diff below — these are your team's **rules**, merge deliberately.
+            What changed: see the upstream [CHANGELOG](https://github.com/Razeow96/RazeowDev/blob/main/CHANGELOG.md).
+          delete-branch: true
