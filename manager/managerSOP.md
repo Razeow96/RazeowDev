@@ -123,7 +123,7 @@ Rows are append-only: renamed → update the path, code unchanged · killed → 
 1. Create the repo under `github.com/<your-account>`, folder under `~\Documents\GitHub\`.
 2. Junction the team folder (no admin needed):
    `New-Item -ItemType Junction -Path "<repo>\team" -Target "$HOME\Documents\GitHub\<your-hq-repo>\team"`
-   (The dev-team agents are user-level, not per-repo — a one-time `~/.claude/agents` junction to HQ `globalagents/` covers every repo; see `globalagents/README.md`. No per-repo step.)
+   (The dev-team agents are user-level, not per-repo — a one-time `~/.claude/agents` junction to HQ `HQ-M5-team/globalagents/` covers every repo; see `HQ-M5-team/globalagents/README.md`. No per-repo step.)
 3. Copy `.gitignore` baseline: `docs/private/` · `.claude/settings.local.json` · `*.env`.
 4. Create the five fixed files: `CLAUDE.md` from §6 (fill the operator card — Status almost always PLANNING) · `session.md`, `learnrules.md`, `vocabulary.md`, `M0-laneindex.md` from §4.
 5. Add the company section to the HQ registry (`HQ-M1-org-chart.md`) and the repo to the Brain's `REPOS` list (`HQ-M0-brain/HQ-M0.4-ingest.mjs`) — update BOTH in the same pass.
@@ -142,7 +142,7 @@ Rows are append-only: renamed → update the path, code unchanged · killed → 
 ### P3 · Junction repair
 
 Symptom: `OPERATOR HANDBOOK v2 LOADED` missing at boot, or a dev-team agent reports its seat sentinel missing.
-`Get-Item "<repo>\team" | Select LinkType` — if not `Junction`, delete the stale folder (first: no live process from that path, registry `runtime:` clear) and re-run P1 step 2. Same procedure for `~/.claude/skills` (target `<your-hq-repo>\globalskills\<name>`) and `~/.claude/agents` (target `<your-hq-repo>\globalagents`).
+`Get-Item "<repo>\team" | Select LinkType` — if not `Junction`, delete the stale folder (first: no live process from that path, registry `runtime:` clear) and re-run P1 step 2. Same procedure for `~/.claude/skills` (target `<your-hq-repo>\globalskills\<name>`) and `~/.claude/agents` (target `<your-hq-repo>\HQ-M5-team\globalagents`).
 
 ### P4 · Status transitions
 
