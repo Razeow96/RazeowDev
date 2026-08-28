@@ -2,6 +2,7 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-08-28 · Revert "linear-law.md v1 — one home for read/write/lean rules (learnrule #38 home found)"
 - 2026-08-28 · linear-law.md v1 — one home for read/write/lean rules (learnrule #38 home found)
 - 2026-08-28 · RAZ-381: brief human-readable law — full titles never codes, vision+objective reports
 - 2026-08-28 · RAZ-381: org clock moved to CF Worker cron (GH scheduler proven best-effort); GH workflows dispatch-only
