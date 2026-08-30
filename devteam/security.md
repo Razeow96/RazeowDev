@@ -33,23 +33,19 @@ Loads when the task touches auth, secrets, input from outside the process, publi
 ## 3 · Secrets & credentials
 
 - **SEC-4** Secrets live in the secret store/env ONLY — never SQL, never the browser, never logs, never CLI arguments (rotate any key that has ever been one), never shared across environments. Duplicated config (env + worker secret) is enumerated at its definition site and rotated in lockstep.
-- **SEC-24** Secret leakage is blocked mechanically, not by discipline: gitignored env/private paths PLUS a pre-commit + CI secret-scan with a current pattern list (JWT `eyJ…`, `sk-…`, `ghp_`/`github_pat_`, `AKIA…`, bot-token shapes, generic `key/secret/password/token =`), rehearsed once with a fake key to prove the hook actually blocks. An unrehearsed hook is not a hook.
+- **SEC-24** Secret leakage is blocked mechanically, not by discipline: gitignored env/private paths PLUS a pre-commit + CI secret-scan with a current pattern list, rehearsed once with a fake key to prove the hook actually blocks. An unrehearsed hook is not a hook. Reference: `security-perimeter.md` — read when building or auditing the scan's pattern list.
 - **SEC-27** Credentials and PII: passwords are hashed with a slow, salted, purpose-built KDF (bcrypt/scrypt/argon2/PBKDF2 at the runtime's supported cost — SEC-7) — never encrypted, never reversible, never home-rolled, never logged or returned. Lookup identifiers (email, username) are stored normalized and uniquely constrained. Personal data is minimized — never collect what the product doesn't need — and never appears in logs, URLs, or error messages.
 - **SEC-5** After setting or rotating a secret, verify the stored value actually took — Windows shells corrupt secrets silently (BOM injection on a pipe, `$`-expansion in a literal) and it surfaces as a misleading wrong-key error. The platform-specific command form is a stack-pack note, not a security rule.
 - **SEC-6** Guard required config at the boundary: an unset binding must never reach an upstream API (it stringifies to `"undefined"`); loaders refuse to start on missing/malformed/placeholder config — fail fast with a CONFIG error, not a vendor error.
 
 ## 4 · Network & transport
 
-- **SEC-28** Encrypted transport everywhere, no exceptions: every call — inbound, outbound, internal, webhook, and every documented example — is HTTPS/TLS; certificate validation is NEVER disabled (no `verify=False`, no `rejectUnauthorized:false`, not "temporarily in dev"); credentials and tokens never travel over plain HTTP; a raw-HTTP integration is upgraded or refused. Redirect-to-HTTPS is enforced at the edge.
-- **SEC-14** Public surfaces are protected before they are public: bot/DDoS protection at the edge, and a challenge (CAPTCHA/Turnstile) on abuse-prone unauthenticated endpoints — signup, login, contact, and anything that costs money per call.
-- **SEC-15** Rate limits are per endpoint CATEGORY, not global: auth/login strictest (per-IP AND per-account, with lockout/backoff), then write endpoints, then expensive/paid endpoints, then public reads. An unlimited login endpoint is a credential-stuffing invitation. Abuse limits (SEC) and spend gates (BE-2/3) are different controls — both are required.
-- **SEC-26** Escalating auto-block on probing: repeated failures from one source are a signal, not noise — failed auth, malformed/unauthorized requests, or 404-scanning from one IP escalates throttle → temporary block → **auto-ban at a stated threshold**, with every ban logged and surfaced (SEC-21). A prober gets one cheap window, not unlimited retries. Legitimate-user lockout is handled by account-scoped backoff, never an IP ban.
+Reference: `security-perimeter.md` (SEC-28 · SEC-14 · SEC-15 · SEC-26) — read when the review scope includes network, transport, rate limiting or auto-block.
 
 ## 5 · Third-party & supply chain
 
-- **SEC-19** Inbound callers prove identity: webhook signatures verified (HMAC + timestamp window + replay guard), tokens validated server-side — "it came from their IP" or "it hit our secret URL" is NOT authentication. Never trust an inbound payload because it looks like the vendor's.
-- **SEC-18** Every third-party integration is inventoried: what it is, what data crosses, which credential it uses, where that credential lives, and its blast radius if compromised. An integration nobody has written down is one nobody can rotate or revoke.
-- **SEC-20** Dependencies are pinned, reviewed when added, and updated on a cadence for security patches; a new dependency is a decision (LEAD-6 reuse-check), never a reflex install.
+- **SEC-19** Inbound callers prove identity — signatures verified, tokens validated server-side; "it came from their IP" is NOT authentication.
+- Reference: `security-perimeter.md` (SEC-19 in full · SEC-18 · SEC-20) — read when the review scope includes a third-party integration or a dependency change.
 
 ## 6 · Safe failure
 
@@ -60,15 +56,13 @@ Loads when the task touches auth, secrets, input from outside the process, publi
 
 ## 7 · Detection & response
 
-- **SEC-21** Anomalies are detected, not merely logged: failed-auth spikes, unfamiliar access (new IP/geo/device on an admin surface), unusual spend or volume — each with a stated threshold and a named destination that reaches the owner (OPS-23). Logs nobody queries are archaeology, not security.
-- **SEC-22** A leak has a rehearsed response: rotate the credential FIRST, then assess blast radius, then close the hole — using the same rotation procedure kept current for drills (OPS-24). Any secret that has ever been exposed is rotated, never "probably fine".
-- **SEC-12** A security review runs before any client-facing exposure, and accepted risks are RECORDED with owner sign-off — an unrecorded accepted risk is an unknown risk at handover. The review's content is the §8 test plan; this rule is its gate.
+- **SEC-12** A security review runs before any client-facing exposure, and accepted risks are RECORDED with owner sign-off. The review's content is the §8 test plan; this rule is its gate.
+- Reference: `security-perimeter.md` (SEC-21 · SEC-22 · SEC-12 in full) — read when the review scope includes anomaly detection, alert thresholds or a leak response.
 
 ## 8 · Threat modelling & the security test plan
 
-- **SEC-30** Security sits in the design conversation, and every domain names its **TOP 3 critical functions** — the few whose compromise costs money, trust, or control (change a price · issue a refund · change a payout destination · alter a quote · grant admin · export customer data). Security asks the architect and the operator for those three, per domain, at design time. Naming three is the filter that makes threat modelling finite: the top 3 get bespoke abuse-case analysis (§8), everything else is covered by the standing rules in §1–7.
-- **SEC-31** For each critical function, enumerate the **abuse cases by path, not by feature** — for a price change: tampered directly via API without touching the dashboard · changed with a valid session but the wrong role · request replayed · signature/webhook forged · value altered client-side after approval · privilege escalated to admin · reached through a compromised dependency or host · read/exported by an unauthenticated caller. Each abuse case lands as one line on the domain's **security test list**, kept in the domain SPEC beside the architect's failure map (ARCH-29) — so design → threats → guards → tests is one chain in one artifact.
-- **SEC-32** The test list ACCUMULATES during build and is EXECUTED once before production exposure — not per feature, per release. Writing an abuse case down costs nothing mid-build; running the pass is a deliberate session (the tester builds the harness per TEST-8, security judges the results) whose scope is: every abuse case on the list, the deny path of each (SEC-3), and anything the failure map marked as guarded. A critical function that has never had its abuse cases run is unproven, whatever the feature tests say. Scope boundary: this is threat modelling and executing abuse cases against our OWN systems — never exploit development, never testing anything Raze does not own.
+Reference: `security-threatmodel.md` (SEC-30 · SEC-31 · SEC-32) — read when running a critical-function review: naming the top 3, enumerating abuse cases, or executing the pre-production pass.
+
 - **SEC-33** Critical functions get defence in depth as a CLASS, not case by case: every path to them is authenticated (SEC-3), authorized to the narrowest role (SEC-8), verified server-side against the provider or our own record (SEC-25), rate-limited (SEC-15), and writes an audit row naming who did what to which entity. Depth means a single failed control never equals a breach — one bypassed check should still meet another.
 
 `SEC RULES v1 LOADED`

@@ -2,6 +2,10 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-08-30 · 2026-08-30
+- 2026-08-28 · 2026-08-28
+- 2026-08-28 · RAZ-381: Laura KR confidence RAG with computed triggers
+- 2026-08-28 · RAZ-381: Laura Linear read law — 5 reads, Done<=14d window, Canceled/Duplicate invisible
 - 2026-08-28 · Revert "linear-law.md v1 — one home for read/write/lean rules (learnrule #38 home found)"
 - 2026-08-28 · linear-law.md v1 — one home for read/write/lean rules (learnrule #38 home found)
 - 2026-08-28 · RAZ-381: brief human-readable law — full titles never codes, vision+objective reports

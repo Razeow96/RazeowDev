@@ -16,8 +16,10 @@ H. HQ contract — org-coupled rules; a sale deletes this section only
 |---|---|
 | PLANNING | Planning docs and structure only — **zero build hours** until the portfolio gate (cost to proof · time to revenue · run cost · kill date + metric) is approved. Gate fields unset → flag, don't assume. |
 | KICKED-OFF / LIVE | Build under the laws below; proven run = Done. |
-| FOR-SALE | Feature freeze; transfer procedure (SOP §5) only. |
+| FOR-SALE | Feature freeze; transfer procedure (/repotransfer) only. |
 | RETIRED / SOLD | Read-only; codes stay retired forever. |
+
+- **MGR-44** Status transitions: PLANNING → KICKED-OFF only on the portfolio gate approved by Raze (recorded in registry + operator card, same pass) · KICKED-OFF → LIVE on the first main path proven for real · any → FOR-SALE / RETIRED on Raze's call, with registry + card + Linear project state updated together.
 
 ## 2 · Linear & Done
 
@@ -27,7 +29,7 @@ H. HQ contract — org-coupled rules; a sale deletes this section only
 - **MGR-22** Proven run = Done: the main path ran once for real, result observed — phone included for any UI, end-to-end for anything spanning ≥2 domains. Interim honesty phrasing: "self-tested vs mocks, awaiting live proof."
 - **MGR-23** Done ≠ live. Deploying built artifacts is part of finishing a build — do it without being asked. Go-live switches, publishing, spending money and git pushes are **the owner's, exclusively** — never performed autonomously. State a go-live prerequisite once, in its issue, then drop it.
 - **MGR-24** Ticket reconcile at close: every issue touched this session leaves in its true state. Canceled only on Raze's explicit call — a drop is a verdict, never an inference; dropped issues are never deleted.
-- **MGR-25** Issue routing: move to the destination project, never duplicate. Todo = do now · Backlog+`hold` = on hold · Canceled = dropped.
+- **MGR-25** Issue routing → `team/manager/linear-law.md` LIN-7 (the one home for the verdict → state map).
 
 ## 3 · Verification & conduct
 
@@ -35,7 +37,6 @@ H. HQ contract — org-coupled rules; a sale deletes this section only
 - **MGR-29** Before parallel work, list the stateful resources each task touches: one owner, an isolated instance each, or serialize. Parallelism is only free when the workers are disjoint.
 - **MGR-30** Blessed path: any capability with more than one way to do it — especially options differing in **cost** — gets its paved road written down before the second option is ever used.
 - **MGR-31** A rule citation must resolve. Citing a rule number that doesn't exist in the named register is a defect the citer fixes.
-- *(MGR-26, MGR-28, MGR-35 ruled dev rules 08-18 → land in `team/devteam/` at Tue's block; numbers stay retired.)*
 
 ## 4 · Credentials & transferability
 
