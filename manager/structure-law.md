@@ -46,6 +46,15 @@ One rule, one home (MGR-11) — everything else cites the ID. **HQ is the master
 | `learnrules.md` / `learnedrules.md` per repo | LEARNED |
 | `session.md` · fin ledger · Brain tables | STATE |
 
-## 7 · Enforcement
+## 7 · Folder & item law (approved 2026-09-02)
+
+How item codes land on disk — one rule set, every module, every repo:
+
+1. **An item with 2+ files gets an item folder** `<code>-<slug>/`; a **single-file item stays flat** as `<code>-<slug>.ext` in the module folder. No folders for one file.
+2. **Migrations are sub-item files inside the data-layer item's folder** (e.g. `HQ-M4.1-data-layer/HQ-M4.1.2-….sql`) — never module items.
+3. **Shipped / junction-distributed assets keep their real names** — the code stays registry metadata (§6 code-don't-rename). The canonical case: the `team/` corpus (M5.1) — junction-mounted into operator repos as the wired address, published publicly — never carries a code prefix, outside or inside.
+4. **Every module folder carries its root doc** `<module-code>-<slug>.md` with the item index and any old→new code map (§7.6).
+
+## 8 · Enforcement
 
 `/loadstatus` — measures every seat's real load against §3. `/auditceo` P2 — per doc, one mechanical check: *does this doc match its class's load and growth behavior?* A doc fitting no class, or two, is the split signal. The close sweep keeps LEARNED draining. Findings are reported; fixes execute on Raze's verdicts.

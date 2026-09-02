@@ -25,15 +25,15 @@ The brief opens with the checklist of every boot file, actual state never assume
 
 - **globalclaude drift:** compare authored `<your-hq-repo>\globalclaude.md` against live `~/.claude/CLAUDE.md`. Drifted → one line + the push command: `Copy-Item "$HOME\Documents\GitHub\<your-hq-repo>\globalclaude.md" "$HOME\.claude\CLAUDE.md" -Force`
 - **Skill junctions:** derived from what is on disk (`globalskills\*` + repo-authored globals), never a hardcoded list — a new skill folder is checked the day it is authored. Each `~/.claude/skills/<name>` must be a Junction to its authored source.
-- **Agents junction:** `~/.claude/agents` → `<your-hq-repo>\HQ-M5-team\globalagents`.
+- **Agents junction:** `~/.claude/agents` → `<your-hq-repo>\HQ-M5-team\HQ-M5.3-globalagents`.
 
 ## BOOT-4 · Junction repair (recovery)
 
 Symptom: a handbook/seat sentinel missing at boot or dispatch. `Get-Item "<path>" | Select LinkType` — if not `Junction`, delete the stale folder (first: no live process from that path, registry `runtime:` clear — OPS-16) and recreate:
 
-- repo team: `New-Item -ItemType Junction -Path "<repo>\team" -Target "$HOME\Documents\GitHub\<your-hq-repo>\HQ-M5-team\team"`
+- repo team (**operator repos only — never HQ**, which reads the corpus at its real path `HQ-M5-team/team/`, registry HQ-M5.1): `New-Item -ItemType Junction -Path "<repo>\team" -Target "$HOME\Documents\GitHub\<your-hq-repo>\HQ-M5-team\team"`
 - a skill: `New-Item -ItemType Junction -Path "$HOME\.claude\skills\<name>" -Target "$HOME\Documents\GitHub\<your-hq-repo>\globalskills\<name>"`
-- agents: `New-Item -ItemType Junction -Path "$HOME\.claude\agents" -Target "$HOME\Documents\GitHub\<your-hq-repo>\HQ-M5-team\globalagents"`
+- agents: `New-Item -ItemType Junction -Path "$HOME\.claude\agents" -Target "$HOME\Documents\GitHub\<your-hq-repo>\HQ-M5-team\HQ-M5.3-globalagents"`
 
 ## BOOT-5 · Skills roster
 
