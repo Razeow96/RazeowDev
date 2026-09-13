@@ -2,6 +2,7 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-09-13 · 2026-09-13
 - 2026-09-02 · 2026-09-02
 - 2026-08-30 · 2026-08-30
 - 2026-08-28 · 2026-08-28

@@ -28,6 +28,6 @@ For a build that came through the design pipeline (LEAD-20), the lead may copy t
 | CONTRACT | the API/event/data contract at the boundary (ARCH-10/13) |
 | NUMBERS | the declared delivery metrics and their targets (ARCH-28) |
 | UPSTREAM | the upstream seat's ACTUAL output, captured — not its promise |
-| CREDENTIALS | where each needed credential lives (never the value) |
+| CREDENTIALS | where each needed credential lives (never the value) — every key the lane consumes already has a row in `.env.example` and a value in `.env` (LEAD-24), else the brief is not sent |
 
 `DISPATCH BRIEF TEMPLATE LOADED`

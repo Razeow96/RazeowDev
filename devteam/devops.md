@@ -55,7 +55,7 @@ Loads when the task provisions, deploys, restarts, schedules, supervises, serves
 ## 7 · Recovery
 
 - **OPS-14** An untested backup is not a backup: restore rehearsed into a scratch environment, one row read back, once; one copy is not a backup; the restore procedure is written and rehearsable. Backup effort follows the data's class (DB-16) — you do not back up a cache, and a derived store is rebuilt, not restored.
-- **OPS-24** Secrets are per-environment (SEC-4) with a stated rotation cadence and a documented rotation procedure naming every place the value is duplicated. A secret nobody knows how to rotate is a secret that never gets rotated.
+- **OPS-24** Secrets are per-environment (SEC-4) with a stated rotation cadence and a documented rotation procedure naming every place the value is duplicated. A secret nobody knows how to rotate is a secret that never gets rotated. The register that carries cadence and duplication places is the project's `.env.example` (LEAD-24) — one line per key, never a value.
 
 ## 8 · Cost & capacity
 
