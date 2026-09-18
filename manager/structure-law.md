@@ -40,7 +40,7 @@ One rule, one home (MGR-11) — everything else cites the ID. **HQ is the master
 | Where | Class |
 |---|---|
 | `~/.claude/CLAUDE.md` (globalclaude) · repo `CLAUDE.md` cards · nested domain `CLAUDE.md` · `team/manager/*-rules|*-law` · `team/devteam/<seat>.md` + `stacks/` · seat cards (`HQ-M5-team/<seat>/`) | LAW |
-| `globalskills/` · `.claude/skills/` · agent wrappers (`globalagents/`) | SKILL |
+| `globalskills/` · `.claude/skills/` · seat skills (`HQ-M5-team/<seat>/skills/`) · agent wrappers (`globalagents/`) | SKILL |
 | `team/manager/manager-templates.md` · `team/devteam/dispatch-brief.md` | TEMPLATE |
 | registry (`HQ-M1-org-chart`) · lane indexes · `team/devteam/*-reference|*-topology|*-perimeter|*-threatmodel` · `docs/` · readmes · `vocabulary.md` | REFERENCE |
 | `learnrules.md` / `learnedrules.md` per repo | LEARNED |
