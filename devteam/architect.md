@@ -45,6 +45,12 @@ The architect seat is **upstream of code** and is a **dispatched agent** — the
 
 Reference: `architect-topology.md` (ARCH-22 · ARCH-12 · ARCH-23 · ARCH-32 · ARCH-24 · ARCH-34 · ARCH-25) — read when the design places workloads, data, or CI.
 
+- **ARCH-35 · More than one credential on a machine that runs untrusted input? Design the DOORMAN and the GATE — by default, unasked.** Trigger: any project or sub-project where two or more credentials sit together, **or** where an agent, a scheduled job or anything that reads the open web holds a credential. The architect designs both in the same pass as the topology; the owner is never asked to specify it per project, and "we will secure it later" is not a design.
+  - **The doorman** performs one named, scoped action and **never returns a credential**. The caller asks for a RESULT ("get me this data", "write this row"), the doorman holds the key and makes the call. Scoped per caller, rate-limited, spend-capped where the far side is metered, and it logs every call.
+  - **The gate** judges the CHANGE, never the requester — mechanically, on what the change is, at the point it would take effect. A gate that asks "who is asking" is not a gate.
+  - **Why both, and why neither alone.** A control that filters by WHERE a request comes from — an IP allow-list, a firewall, an SSH key, a signature made with a key the caller can read — answers only the outsider. The realistic threat for an agent starts INSIDE, because the agent is already at the allowed address. What limits an insider is what the far side will DO. The doorman bounds what can be taken; the gate bounds what can be shipped.
+  - **State the residual, always.** Name what a compromised caller can still reach, as a list. A design that claims "secure" instead of listing the residual has not been reviewed.
+
 ## 6 · The contracts
 
 - **ARCH-13** API planning is contract-first: define the boundary, the versioning rule, the auth model and the error contract before implementation; the shape is the architect's, the exact endpoint rules are the backend seat's (BE).

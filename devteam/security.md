@@ -63,6 +63,7 @@ Reference: `security-perimeter.md` (SEC-28 · SEC-14 · SEC-15 · SEC-26) — re
 
 Reference: `security-threatmodel.md` (SEC-30 · SEC-31 · SEC-32) — read when running a critical-function review: naming the top 3, enumerating abuse cases, or executing the pre-production pass.
 
+- **SEC-34** Credential topology is the architect's call, not a review finding — cite **ARCH-35** (doorman + gate) rather than restating it. The security seat's job here is to check it was applied and that the residual list is real: that no route returns a credential, that the gate judges the change and not the requester, and that a control filtering by origin (IP allow-list, firewall, SSH key, a signature made with a key the caller can read) is never counted as the control that stops an insider.
 - **SEC-33** Critical functions get defence in depth as a CLASS, not case by case: every path to them is authenticated (SEC-3), authorized to the narrowest role (SEC-8), verified server-side against the provider or our own record (SEC-25), rate-limited (SEC-15), and writes an audit row naming who did what to which entity. Depth means a single failed control never equals a breach — one bypassed check should still meet another.
 
 `SEC RULES v1 LOADED`

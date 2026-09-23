@@ -6,16 +6,17 @@ The one home for how a session boots, in every repo. Act-scoped law (structure-l
 
 ## BOOT-1 · MCP connection gate
 
-Four mandatory servers, matched by tool-name prefix (exact server names vary by install):
+Three mandatory servers, matched by tool-name prefix (exact server names vary by install):
 
 | Server | Expected tool prefix |
 |---|---|
 | Linear | `mcp__claude_ai_Linear__` |
-| Bright Data | `mcp__bright-data__` |
 | Cloudflare | `mcp__cloudflare` |
 | Figma | `mcp__plugin_figma` (or `mcp__figma`) |
 
-All four present → say nothing, continue. **Any missing → stop the boot.** Name the missing server(s), tell Raze to connect (`/mcp`, or `claude mcp add`), ask for a session restart. Never boot on a partial toolset — a boot that silently skips a dead connection hides the failure until mid-work. A server still connecting is retried via tool search before being declared missing.
+**Bright Data is not a boot server** (owner ruling 2026-09-23): it is marketing tooling, checked only when a marketing or research task needs it; a dead Bright Data connection stops that task, never the boot. n8n is retired (2026-08, an internal ticket) — a leftover n8n connector failing is not a finding.
+
+All three present → say nothing, continue. **Any missing → stop the boot.** Name the missing server(s), tell Raze to connect (`/mcp`, or `claude mcp add`), ask for a session restart. Never boot on a partial toolset — a boot that silently skips a dead connection hides the failure until mid-work. A server still connecting is retried via tool search before being declared missing.
 
 ## BOOT-2 · Boot-file checklist
 
