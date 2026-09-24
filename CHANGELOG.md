@@ -2,6 +2,7 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-09-24 · 2026-09-24
 - 2026-09-23 · 2026-09-23 - web team credential perimeter + key broker wiring, boot gate trimmed
 - 2026-09-23 · 1
 - 2026-09-20 · 9/20

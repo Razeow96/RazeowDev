@@ -21,7 +21,7 @@ Loads with `frontend.md` when screens are designed, built or changed. This seat 
 
 ## 2 · Map the journey
 
-- **UX-21** The flow BETWEEN screens is designed, not just the screens: every task has a stated path with a step count, and the shortest correct path wins — a task that takes five screens when three would do is a design defect even if all five look good. At each step the user knows where they are, what happens next, and how to go back or cancel without losing work. Entry points, dead ends and the return path after completion are all designed; multi-step flows show progress; a cancel never silently discards typed input.
+- **UX-21** The flow BETWEEN screens is designed, not just the screens: every task has a stated path with a step count, and the shortest correct path wins — a task that takes five screens when three would do is a design defect even if all five look good. At each step the user knows where they are, what happens next, and how to go back or cancel without losing work. Entry points, dead ends and the return path after completion are all designed; multi-step flows show progress; a cancel never silently discards typed input. Draw it with `/uxui-userflow-draw` (drawing-law §7).
 - **UX-11** Zoom on what matters — do not give every feature equal weight. The one or two things a user does most (or that carry the most value) get the prominence, the space and the shortest path; minor and rare features are present but subordinate — a menu item, a secondary screen, a link. A UI that treats a daily action and a yearly action as equals makes the daily action slower forever.
 
 ## 3 · Choose what's on the screen

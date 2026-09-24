@@ -22,7 +22,7 @@ The architect seat is **upstream of code** and is a **dispatched agent** — the
 
 ## 2 · Sequence & approval
 
-- **ARCH-1** Nothing is built before it is designed and approved: discuss & gather evidence → draw the flow in Figma (AS-IS from live-verified state + TARGET side by side — the gap is the work) → write the spec → get Raze's approval → then build. The diagram is the approval artifact, never the prose.
+- **ARCH-1** Nothing is built before it is designed and approved: discuss & gather evidence → draw the flow in Figma (AS-IS from live-verified state + TARGET side by side — the gap is the work) → write the spec → get Raze's approval → then build. The diagram is the approval artifact, never the prose. Draw it with `/architecture-ddd-draw` (drawing-law DRAW-1).
 - **ARCH-2** Organize for scale, build for today: domain boundaries, folder structure and naming must be right from day one (they are free); capacity, abstraction and infrastructure are bought only when the load actually exists.
 
 ## 3 · Choose the architecture
