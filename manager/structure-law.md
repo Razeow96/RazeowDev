@@ -54,6 +54,7 @@ How item codes land on disk — one rule set, every module, every repo:
 2. **Migrations are sub-item files inside the data-layer item's folder** (e.g. `HQ-M4.1-data-layer/HQ-M4.1.2-….sql`) — never module items.
 3. **Shipped / junction-distributed assets keep their real names** — the code stays registry metadata (§6 code-don't-rename). The canonical case: the `team/` corpus (M5.1) — junction-mounted into operator repos as the wired address, published publicly — never carries a code prefix, outside or inside.
 4. **Every module folder carries its root doc** `<module-code>-<slug>.md` with the item index and any old→new code map (§7.6).
+5. **A skill built in the HQ repo is self-contained** (owner ruling 2026-09-25). Every file it needs — scripts, templates, examples, briefs — lives inside its own skill folder. It never points to, reads from or relies on a file in another repo; the reusable part is copied in at build time, even when the source was pasted from a company repo.
 
 ## 8 · Enforcement
 
