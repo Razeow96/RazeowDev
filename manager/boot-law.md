@@ -27,6 +27,7 @@ The brief opens with the checklist of every boot file, actual state never assume
 - **globalclaude drift:** compare authored `<your-hq-repo>\globalclaude.md` against live `~/.claude/CLAUDE.md`. Drifted → one line + the push command: `Copy-Item "$HOME\Documents\GitHub\<your-hq-repo>\globalclaude.md" "$HOME\.claude\CLAUDE.md" -Force`
 - **Skill junctions:** derived from what is on disk (`globalskills\*` + repo-authored globals), never a hardcoded list — a new skill folder is checked the day it is authored. Each `~/.claude/skills/<name>` must be a Junction to its authored source.
 - **Agents junction:** `~/.claude/agents` → `<your-hq-repo>\HQ-M5-team\HQ-M5.3-globalagents`.
+- **Non-Claude mirror:** any `AGENTS.md` that differs from its `CLAUDE.md` source (or `~/.agents/AGENTS.md` from `globalclaude.md`) is drift → rerun `& "$HOME\Documents\GitHub\<your-hq-repo>\HQ-M2-tooling\HQ-M2.6-agents-mirror.ps1"`.
 
 ## BOOT-4 · Junction repair (recovery)
 
