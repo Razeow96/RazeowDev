@@ -43,7 +43,7 @@ it is documentation.
 1. YYYY-MM-DD — <rule, one or two lines, imperative> · Home: <file> · suggest: [<seat/global doc>] [CEO — global candidate]
 ```
 
-## T3b · vocabulary.md
+## T3b · repovocabulary.md · `<CODE>-vocabulary.md`
 
 ```markdown
 # Vocabulary — <CODE>
@@ -59,17 +59,21 @@ New terms are added in the same pass as whatever introduces them (MGR-43 · DB-1
 ```
 Populate at the next natural touch of an area — never a back-fill sprint. A known collision is written down as a row rather than left to be rediscovered.
 
-## T3 · M0-laneindex.md
+## T3 · repolaneindex.md · `<CODE>-laneindex.md` · `sot/<code>-register.md`
+
+One register format at every level — repo, module, project (MGR-10, MGR-45). Same columns everywhere so a human sheet view and the AI read the same table.
 
 ```markdown
-# <CODE>-M0 — Lane index
+# <CODE> — Lane index        (register: "# <CODE> — <Project name> register")
 
-Authority for every <CODE> code. If any surface disagrees, this table wins locally; the HQ registry wins above it.
+Authority for every <CODE> code at this level. If any surface disagrees, this table wins locally; the level above wins above it (HQ registry at the top).
+Human view: <sheet link, or — until a sheet tool is connected>
 
-| Code | Lane | Folder | Linear | Board |
-|---|---|---|---|---|
-| <CODE>-M1 | <name> | <path> | <issue/project link> | <Figma link or —> |
+| Code | Name | Type | Path / link | Linear | Owner | Status | Last update |
+|---|---|---|---|---|---|---|---|
+| <CODE>-M1 | <name> | module | <folder>/ · <CODE>-M1-laneindex.md | <link or —> | Raze / Claude / <seat> | live | YYYY-MM-DD |
 ```
+Type: `module · project · doc · template · sop · agent · skill · key · figma · url`. Status: `current · live · active · parked · archive · retired`. A `key` row records where it is stored and its expiry, never the value. Code numbers are append-only; a retired row stays.
 Over the size guard → spine + leaf split (structure-law §1 REFERENCE): the domains table stays as the spine with a `Lanes` file-path column; each domain's lane rows become their own file addressed by filename.
 
 ## T4 · Repo CLAUDE.md (template: v2)
@@ -119,3 +123,23 @@ Anything needing >3 lines points to a /docs SPEC instead.>
 ```
 
 **Never in a repo CLAUDE.md:** global law restated · handbook rules restated · communication/naming law · OKR beyond the owned-KR line · history or changelog (git holds it) · boot-order instructions (MGR-1 owns it) · lesson narratives (learnrules holds them) · credential values (nowhere, ever).
+
+## T6 · `msot/` — master source of truth (repo root and every module)
+
+```
+msot/
+├─ onboarding.md        what this level is, who works in it, where to start, which lane index to read
+├─ sop-<act>.md         one per repeatable act (e.g. sop-new-website.md): steps · docs needed · template · agent · output path · done check
+├─ qna.md               answered questions, one row each, with the doc that settles it
+└─ templates/           one template per doc every project below must produce in its sot/
+```
+Every file here has a row in its level's lane index. A module whose projects all need the same doc gets its template here — never a copy per project.
+
+## T7 · `sot/` — one project's finalized truth
+
+```
+sot/
+├─ <code>-register.md   T3 table: every truth doc, link, agent, key and URL of this project
+└─ <the docs its module's msot/templates/ require, filled in>
+```
+A doc not in `sot/` and not a register row is working material (MGR-45) — promoted, merged or deleted at close.

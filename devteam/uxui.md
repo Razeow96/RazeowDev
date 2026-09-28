@@ -29,7 +29,7 @@ Loads with `frontend.md` when screens are designed, built or changed. This seat 
 - **UX-12** A screen shows what the human needs, not what the system has: for every element ask *does a person need this to decide or act, or is it system-internal?* — internal ids, flags, timestamps, and plumbing fields stay out of the interface. Never render a raw table dump or a raw dataset: translate into human-readable knowledge — labels not enum codes, "3 days ago" not a raw timestamp, a status word not a status integer, a computed answer not the columns it came from.
 - **UX-13** Keep the page light: avoid walls of text and dense information. Where detail is genuinely needed, layer it — a hyperlink, an expandable note, a tooltip, a detail view, a second screen. The first screen answers the question; the depth is available on demand.
 - **UX-4** Operators see labels, never raw ids: forms bind to the label and submit the id from behind; an id appears only as a deliberate debug affordance.
-- **UX-14** Write like a person, not a generator: plain sentences, no em-dash-heavy phrasing, no filler, no marketing voice in an operational UI. Labels are the words the user already uses (`vocabulary.md`), and the same thing is called the same thing on every screen.
+- **UX-14** Write like a person, not a generator: plain sentences, no em-dash-heavy phrasing, no filler, no marketing voice in an operational UI. Labels are the words the user already uses (`repovocabulary.md`), and the same thing is called the same thing on every screen.
 
 ## 4 · Structure the screen
 

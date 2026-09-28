@@ -42,7 +42,7 @@ One rule, one home (MGR-11) — everything else cites the ID. **HQ is the master
 | `~/.claude/CLAUDE.md` (globalclaude) · repo `CLAUDE.md` cards · nested domain `CLAUDE.md` · `team/manager/*-rules|*-law` · `team/devteam/<seat>.md` + `stacks/` · seat cards (`HQ-M5-team/<seat>/`) | LAW |
 | `globalskills/` · `.claude/skills/` · seat skills (`HQ-M5-team/<seat>/skills/`) · agent wrappers (`globalagents/`) | SKILL |
 | `team/manager/manager-templates.md` · `team/devteam/dispatch-brief.md` | TEMPLATE |
-| registry (`HQ-M1-org-chart`) · lane indexes · `team/devteam/*-reference|*-topology|*-perimeter|*-threatmodel` · `docs/` · readmes · `vocabulary.md` | REFERENCE |
+| registry (`HQ-M1-org-chart`) · lane indexes (`repolaneindex.md`, `<code>-laneindex.md`) · `msot/` · `sot/` · `team/devteam/*-reference|*-topology|*-perimeter|*-threatmodel` · `docs/` · readmes · `repovocabulary.md` / `<code>-vocabulary.md` | REFERENCE |
 | `learnrules.md` / `learnedrules.md` per repo | LEARNED |
 | `session.md` · fin ledger · Brain tables | STATE |
 
@@ -53,7 +53,7 @@ How item codes land on disk — one rule set, every module, every repo:
 1. **An item with 2+ files gets an item folder** `<code>-<slug>/`; a **single-file item stays flat** as `<code>-<slug>.ext` in the module folder. No folders for one file.
 2. **Migrations are sub-item files inside the data-layer item's folder** (e.g. `HQ-M4.1-data-layer/HQ-M4.1.2-….sql`) — never module items.
 3. **Shipped / junction-distributed assets keep their real names** — the code stays registry metadata (§6 code-don't-rename). The canonical case: the `team/` corpus (M5.1) — junction-mounted into operator repos as the wired address, published publicly — never carries a code prefix, outside or inside.
-4. **Every module folder carries its root doc** `<module-code>-<slug>.md` with the item index and any old→new code map (§7.6).
+4. **Every module folder carries its root doc** `<module-code>-<slug>.md` (the module's design) **and its `<module-code>-laneindex.md`** (the item index and any old→new code map — MGR-10, MGR-45). The item index lives only in the lane index, never also in the root doc.
 5. **A skill built in the HQ repo is self-contained** (owner ruling 2026-09-25). Every file it needs — scripts, templates, examples, briefs — lives inside its own skill folder. It never points to, reads from or relies on a file in another repo; the reusable part is copied in at build time, even when the source was pasted from a company repo.
 
 ## 8 · Enforcement
