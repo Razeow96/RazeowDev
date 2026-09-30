@@ -133,13 +133,13 @@ msot/
 ├─ qna.md               answered questions, one row each, with the doc that settles it
 └─ templates/           one template per doc every project below must produce in its sot/
 ```
-Every file here has a row in its level's lane index. A module whose projects all need the same doc gets its template here — never a copy per project.
+Every file here has a row in its level's lane index. A module whose projects all need the same doc gets its template here — never a copy per project. The level's Google Drive folder mirrors this path with the identical folder names (`<company>/<module folder>/msot`, MGR-45) and holds the non-Markdown files; the lane index's `Human view:` line links it.
 
 ## T7 · `sot/` — one project's finalized truth
 
 ```
 sot/
-├─ <code>-register.md   T3 table: every truth doc, link, agent, key and URL of this project
+├─ <code>-register.md   T3 table: every truth doc, link, agent, key and URL of this project; its `Human view:` line links the project's Drive folder
 └─ <the docs its module's msot/templates/ require, filled in>
 ```
-A doc not in `sot/` and not a register row is working material (MGR-45) — promoted, merged or deleted at close.
+A doc not in `sot/` and not a register row is working material (MGR-45) — promoted, merged or deleted at close. The project's Google Drive folder mirrors this path with the identical folder names (`<company>/<module folder>/<item folder>/sot`, e.g. `<your-hq-repo>/HQ-M4-finance/HQ-M4.2-entry-bot/sot`) and holds the non-Markdown files; a `sot/` is not done until that folder exists and the register links it.

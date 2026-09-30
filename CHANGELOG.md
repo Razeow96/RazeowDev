@@ -2,6 +2,11 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-09-30 · MGR-45: every msot/ and sot/ has a Google Drive folder mirroring the repo path with identical names; the Human view line links it (owner ruling 2026-09-30)
+- 2026-09-30 · Finance: Claude 200, Kimi cancelled on the site · Laura morning report on demand, Telegram only
+- 2026-09-30 · Web team: Agent C reads page views per page through the broker; the weekly report shows ranked beside read
+- 2026-09-30 · Web team: two-track law (weekly optimise + daily publish), read-only backlink skill, reply discipline
+- 2026-09-30 · update seo team
 - 2026-09-28 · 2026-09-28
 - 2026-09-26 · updatte configuration for kimi
 - 2026-09-25 · 2026-09-25
