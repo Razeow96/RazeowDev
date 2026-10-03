@@ -2,6 +2,11 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-03 · Website changelog, HQ side (RS2-M3.0.7, RAZ-623): LEAD-25 read-the-changelog rule for dev sessions; web-team engine design and the four cards read the record before an edit, skip owner-changed pages, write with the version lock
+- 2026-10-02 · Web team boundary: linking to owner pages is allowed; the ban is on creating or editing at owner paths (owner's clarification 2026-10-02)
+- 2026-10-02 · Web team boundary: lanes only, owner pages locked, add-a-lane and add-a-button permissions (owner ruling 2026-10-02; RAZ-608 carries the enforcement build)
+- 2026-10-02 · Web team: a new article ships as a bundle (page + two inbound links, one pull request); A's brief carries the link plan (owner ruling 2026-10-02, RAZ-604)
+- 2026-10-01 · Web team: hand-offs lose the 10-turn cap, stop only on a no-progress loop between two agents (owner ruling 2026-10-01)
 - 2026-09-30 · MGR-45: pre-existing truth folders get their Drive folder at their next touch, never as a back-fill (owner ruling 2026-09-30)
 - 2026-09-30 · MGR-45: every msot/ and sot/ has a Google Drive folder mirroring the repo path with identical names; the Human view line links it (owner ruling 2026-09-30)
 - 2026-09-30 · Finance: Claude 200, Kimi cancelled on the site · Laura morning report on demand, Telegram only
