@@ -2,6 +2,7 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-06 · 1
 - 2026-10-03 · Website changelog, HQ side (RS2-M3.0.7, RAZ-623): LEAD-25 read-the-changelog rule for dev sessions; web-team engine design and the four cards read the record before an edit, skip owner-changed pages, write with the version lock
 - 2026-10-02 · Web team boundary: linking to owner pages is allowed; the ban is on creating or editing at owner paths (owner's clarification 2026-10-02)
 - 2026-10-02 · Web team boundary: lanes only, owner pages locked, add-a-lane and add-a-button permissions (owner ruling 2026-10-02; RAZ-608 carries the enforcement build)
