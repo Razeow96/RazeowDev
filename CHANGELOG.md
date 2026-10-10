@@ -2,6 +2,10 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-08 · Web team daily loop (owner rulings 2026-10-08, RAZ-712, board pages 3.4.3 / 3.5.2 / 3.5.4 / 3.3.1.3): the Team lead starts each day with priority and preflight, the Reviewer reads the overnight audit and hands the Builder 3-5 findings, the uptime alert wakes the Reviewer (revert or tell the owner), one short site brief per turn, preflight line "uptime watch alive", seat history; team law, three cards, engine design, qc-checklist skill and probe, registry. Engine release v2.2.0.
+- 2026-10-07 · Web team agent identity = GitHub App razeow-webteam (owner ruling 2026-10-07): one-hour token per run, Contents RW, Pull requests RW, Metadata R, never a code owner or bypass actor; credential perimeter, engine design, team law, Reviewer card, preflight probe and registry. Engine release v2.1.0.
+- 2026-10-07 · Web team to three seats for RS2-M4 (owner rulings 2026-10-07, board "Website system design"): Builder, Reviewer, Team lead cards replace agents A-D; team law, engine design, credential perimeter, preflight and the new article-image skill; site-store view lock-down (changes_cooking revoked from anon/authenticated, security_invoker) and the RS2-M4.4 migration note; registry rows. Engine release v2.0.0.
+- 2026-10-07 · 1
 - 2026-10-06 · 1
 - 2026-10-03 · Website changelog, HQ side (RS2-M3.0.7, RAZ-623): LEAD-25 read-the-changelog rule for dev sessions; web-team engine design and the four cards read the record before an edit, skip owner-changed pages, write with the version lock
 - 2026-10-02 · Web team boundary: linking to owner pages is allowed; the ban is on creating or editing at owner paths (owner's clarification 2026-10-02)
