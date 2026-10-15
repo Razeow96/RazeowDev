@@ -18,7 +18,7 @@ All three servers below must be present, matched by tool-name prefix, or the boo
 
 ## BOOT-2 · Boot-file checklist
 
-Every boot skill and /loadstatus prints and verifies this one list, never a copy of its own, opening the brief with a line per boot file marked ONLY if its content is really in context this session, else its finding (,,), a failed line reported and never worked around, and `session.md`'s date printed (not today = stale; the Linear pull overrides it, LIN-8).
+Every boot skill prints and verifies this one list, never a copy of its own (/loadstatus reads it too, monthly inside /auditceo, never at boot), opening the brief with a line per boot file marked ONLY if its content is really in context this session, else its finding (,,), a failed line reported and never worked around, and `session.md`'s date printed (not today = stale; the Linear pull overrides it, LIN-8).
 
 - **Main loop, in load order:** `~/.claude/CLAUDE.md` (global card) · `CLAUDE.md` (repo card) · `rulesindex.md` · `knowledgeindex.md` · `repolaneindex.md` · `session.md` · `learnrulesinbox.md`.
 - **Loaded by Claude Code itself, not by the skill:** skill descriptions · agent descriptions · auto-memory `MEMORY.md` · any `.claude/rules/*.md` without a `paths:` header.

@@ -46,4 +46,4 @@ Type: Law · how every doc in every repo is placed, named, headed, sized, update
 - **FILE-20** Research (external guide, method, course note, research result) is Knowledge captured in full, split by topic into files named by topic, under the 15k cap in `rsot/knowledge/` (company-wide) or the project `msot/` (one project), each with header and index row, never truncated and never embedded in a skill or rule, which cites it instead.
 - **FILE-19** One card per repo: no domain or sub-domain `CLAUDE.md`; a hard constraint binding the moment code in a folder is touched is a path rule in `.claude/rules/` with a `paths:` header (Law type, never in rulesindex).
 - **FILE-15** Rules live only in `.md` files loaded in context: agents never fetch rules from SQL, the memory folder is never a home for law or truth, and the Brain's SQL holds lifecycle ledgers and state only.
-- **FILE-16** Method: `rsot/knowledge/doc-enforcement.md`.
+- **FILE-16** Method: `rsot/knowledge/audit-method.md`.
