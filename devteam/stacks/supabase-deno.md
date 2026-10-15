@@ -1,7 +1,3 @@
 # Stack pack — supabase-deno
 
-Platform hazards for Supabase Edge Functions (Deno/TS), pg_cron, and Postgres-side logic. Near-empty by design (LEAD-4): rules land here the day they are learned, never dumped into a seat file.
-
-`SUPABASE-DENO RULES v1 LOADED`
-
-- **SBD-1** *(placeholder — first promoted rule takes this slot)*
+Type: Law · stack pack (LEAD-4): platform hazards for Supabase Edge Functions (Deno/TS), pg_cron, and Postgres-side logic. Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/stacks-rule-rationale.md` (Supabase / Deno section), same rule IDs, open when a rule's judgment is in play.

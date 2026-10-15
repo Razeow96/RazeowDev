@@ -1,10 +1,8 @@
 # Dev team — QA reference
 
-REFERENCE class (structure-law): read when running the documented-controls sweep, issuing the go/no-go, or writing a finding row; the law lives in `qa.md`.
+Type: Law (reference checklists for `qa.md`) · pulled through rulesindex when running the documented-controls sweep, issuing the go/no-go, or writing a finding row. Update: replace a row in place.
 
 ## The documented-controls sweep (QA-11)
-
-Verify each AS DOCUMENTED, never assumed:
 
 - cache headers are actually set and purge on deploy (OPS-19)
 - degradation actually degrades instead of 500ing (OPS-20)
@@ -20,7 +18,7 @@ Every item green before first exposure:
 - the declared metrics measured with actual numbers (QA-17/QA-9)
 - **fallbacks and degradation proven by exercising them**, not by reading the code (OPS-20 · SEC-22's rotation drill · OPS-14's restore)
 - the rollback path confirmed (OPS-18)
-- every known gap **named, owner-accepted and recorded** (SEC-12)
+- every known gap (LEAD-29)
 
 ## The finding row (QA-15)
 
@@ -33,8 +31,8 @@ Every reported item carries six fields:
 | seat | who owns the fix — database · backend · frontend · uxui · devops · security |
 | rule | the rule ID it violates |
 | location | file:line, or the screen |
-| evidence | **both sides quoted in full sentences** — what the build does versus what the design or rule requires |
+| evidence | what the build does versus what the design or rule requires (global card §3) |
+
+Findings are ordered most-severe first, and each states whether it blocks Done.
 
 
-
-`QA REFERENCE LOADED`

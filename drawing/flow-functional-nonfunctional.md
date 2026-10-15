@@ -1,0 +1,12 @@
+# Drawing law · Functional & non-functional flow
+
+Type: Law · functional & non-functional flow: how it is drawn, in every repo · pulled through rulesindex when drawing a functional & non-functional flow, together with index-and-legend.md. Update: one rule = one line; replace the line, never add beside it; IDs are append-only.
+
+Answers: how each feature of a module works, and how well. Sits as sections on the module's page (FIG-2). Seat: architect, `/architecture-ddd-draw`. Altitude: feature step (DRAW-28). The functional flow is a native flowchart; the cards are hand-built (figma-law DRAW-2).
+
+- **DRAW-8 Layout.** One section per feature on the module's page, one drawing per feature: the functional flow (how it works) on top, its non-functional cards (how well) under it. The section shows only the module's own steps; anything entering or leaving is ONE purple port box named with the other module's full code and the event (`→ <code> <feature> · <Event> vN` or `← <code> · <Event> vN`), and that code is the link to its page. No cross-module arrow inside a module page.
+- **DRAW-9 Feature numbering.** Features carry the module's item codes `<code>.<k>`, top → down, and cards carry `<code>.<k>.<j>`, so an edge or a card reads unambiguously.
+- **DRAW-11 Shapes.** Step = rectangle · decision = diamond · store = cylinder · port or outside system = purple box · guarantee = card. Colour only from DRAW-20. A decision's out-edges are labelled with the answer (yes · no: <named error>).
+- **DRAW-34 Non-functional cards.** They sit directly under each feature's flow, in the same section: one card per real guarantee, a title over a two-column table with seven rows — where (the module table, no schema names) · platform · tech · source of truth · number · detected by · fails safe. Never a separate guardrails page.
+- **DRAW-12 Blast radius.** Every reject, drop or error edge carries its blast radius — `single`, `scoped (<scope>)` or `global` (ARCH-18).
+- **DRAW-13 Adapters are drawn, not hidden.** Where sources differ per platform: `platform adapters → normalize → one common typed record` (BE-16), with the place the unifying field is stamped.

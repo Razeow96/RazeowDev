@@ -1,12 +1,14 @@
 # Boot law
 
-`BOOT LAW v1 LOADED`
+Type: Law · how a session boots, in every repo; pulled through rulesindex by /start and /startceo at step 0 — the boot skills keep only their own output shape. Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/governance-law-rationale.md` §boot-law, same rule IDs, open when a rule's judgment is in play.
 
-The one home for how a session boots, in every repo. Act-scoped law (structure-law §2): loaded by /start and /startceo at step 0 — the boot skills cite this file and keep only their own output shape. Consolidated 2026-08-30 from the two byte-identical skill preambles (an internal ticket).
+## MGR-1 · Boot order
+
+The main-loop seat boots global card → repo card → rulesindex · knowledgeindex · repolaneindex → session.md (read by the boot skill) → act, pulling the rule file the act names; nothing else loads at boot (the boot files are BOOT-2's list), and a file that is empty or missing is noted, never silently skipped.
 
 ## BOOT-1 · MCP connection gate
 
-Three mandatory servers, matched by tool-name prefix (exact server names vary by install):
+All three servers below must be present, matched by tool-name prefix, or the boot stops: name the missing server(s), tell Raze to connect (`/mcp`, or `claude mcp add`) and ask for a session restart; all present → continue silently; a server still connecting is retried via tool search before being declared missing; Bright Data is never a boot server, and a dead Bright Data connection stops only the marketing or research task that needs it.
 
 | Server | Expected tool prefix |
 |---|---|
@@ -14,33 +16,34 @@ Three mandatory servers, matched by tool-name prefix (exact server names vary by
 | Cloudflare | `mcp__cloudflare` |
 | Figma | `mcp__plugin_figma` (or `mcp__figma`) |
 
-**Bright Data is not a boot server** (owner ruling 2026-09-23): it is marketing tooling, checked only when a marketing or research task needs it; a dead Bright Data connection stops that task, never the boot. n8n is retired (2026-08, an internal ticket) — a leftover n8n connector failing is not a finding.
-
-All three present → say nothing, continue. **Any missing → stop the boot.** Name the missing server(s), tell Raze to connect (`/mcp`, or `claude mcp add`), ask for a session restart. Never boot on a partial toolset — a boot that silently skips a dead connection hides the failure until mid-work. A server still connecting is retried via tool search before being declared missing.
-
 ## BOOT-2 · Boot-file checklist
 
-The brief opens with the checklist of every boot file, actual state never assumed: ONLY if the content is really in context this session; anything absent, unreadable, or drifted carries its finding on the line (,,). A failed line is reported, never worked around. `session.md`'s date is printed; not today = stale, the Linear pull overrides it (LIN-8).
+Every boot skill and /loadstatus prints and verifies this one list, never a copy of its own, opening the brief with a line per boot file marked ONLY if its content is really in context this session, else its finding (,,), a failed line reported and never worked around, and `session.md`'s date printed (not today = stale; the Linear pull overrides it, LIN-8).
 
-## BOOT-3 · Drift + junction checks (HQ boot)
+- **Main loop, in load order:** `~/.claude/CLAUDE.md` (global card) · `CLAUDE.md` (repo card) · `rulesindex.md` · `knowledgeindex.md` · `repolaneindex.md` · `session.md` · `learnrulesinbox.md`.
+- **Loaded by Claude Code itself, not by the skill:** skill descriptions · agent descriptions · auto-memory `MEMORY.md` · any `.claude/rules/*.md` without a `paths:` header.
+- **Dispatched seat** (`omitClaudeMd: true` on every seat card): the brief · seat card · seat rule file (+ stack pack) · the knowledge files its rules cite, on request. No global card, no repo card, no indexes: the brief carries the repo facts the task needs.
+- **Never at boot:** rule files, knowledge files, module lane indexes, path rules — each loads at the act, folder or module that binds it.
 
-- **globalclaude drift:** compare authored `<your-hq-repo>\globalclaude.md` against live `~/.claude/CLAUDE.md`. Drifted → one line + the push command: `Copy-Item "$HOME\Documents\GitHub\<your-hq-repo>\globalclaude.md" "$HOME\.claude\CLAUDE.md" -Force`
-- **Skill junctions:** derived from what is on disk (`globalskills\*` + repo-authored globals), never a hardcoded list — a new skill folder is checked the day it is authored. Each `~/.claude/skills/<name>` must be a Junction to its authored source.
+## BOOT-3 · Drift + link checks
+
+The boot runs every check below, repairs what the line names itself and reports one line per finding.
+
+- **globalclaude drift (HQ boot only):** authored `<your-hq-repo>\globalclaude.md` vs live `~/.claude/CLAUDE.md`; drifted → the boot copies authored over live itself, compares again and reports the result in one line.
+- **Skill junctions:** derived from what is on disk (`globalskills\*` + repo-authored globals), never a hardcoded list; each `~/.claude/skills/<name>` must be a Junction to its authored source (MGR-17).
 - **Agents junction:** `~/.claude/agents` → `<your-hq-repo>\HQ-M5-team\HQ-M5.3-globalagents`.
-- **Non-Claude mirror:** any `AGENTS.md` that differs from its `CLAUDE.md` source (or `~/.agents/AGENTS.md` from `globalclaude.md`) is drift → rerun `& "$HOME\Documents\GitHub\<your-hq-repo>\HQ-M2-tooling\HQ-M2.6-agents-mirror.ps1"`.
+- **orgrules link (company repos):** `<repo>\orgrules` is a Junction to HQ `rsot\rules`; missing or not a Junction → repair per BOOT-4.
+- **Org drift (HQ boot):** the repolaneindex company rows reconciled against the repos on disk and the Linear projects, one warning line per mismatch; container-only skill folders are never part of the roster check (FILE-17).
+- **Non-Claude mirror:** any `AGENTS.md` that differs from its `CLAUDE.md` source (or `~/.agents/AGENTS.md` from `globalclaude.md`) is drift → rerun `HQ-M2-tooling\HQ-M2.6-agents-mirror.ps1`.
 
 ## BOOT-4 · Junction repair (recovery)
 
-Symptom: a handbook/seat sentinel missing at boot or dispatch. `Get-Item "<path>" | Select LinkType` — if not `Junction`, delete the stale folder (first: no live process from that path, registry `runtime:` clear — OPS-16) and recreate:
-
-- repo team (**operator repos only — never HQ**, which reads the corpus at its real path `HQ-M5-team/team/`, registry HQ-M5.1): `New-Item -ItemType Junction -Path "<repo>\team" -Target "$HOME\Documents\GitHub\<your-hq-repo>\HQ-M5-team\team"`
-- a skill: `New-Item -ItemType Junction -Path "$HOME\.claude\skills\<name>" -Target "$HOME\Documents\GitHub\<your-hq-repo>\globalskills\<name>"`
-- agents: `New-Item -ItemType Junction -Path "$HOME\.claude\agents" -Target "$HOME\Documents\GitHub\<your-hq-repo>\HQ-M5-team\HQ-M5.3-globalagents"`
+An `orgrules/`, skill folder or agents folder that is missing or not a Junction at boot or dispatch is deleted (first: OPS-16) and recreated as a Junction per `rsot/knowledge/junction-repair.md`.
 
 ## BOOT-5 · Skills roster
 
-Discovered, never remembered: list `~/.claude/skills\*` (global) + the repo's `.claude/skills\*` (repo-local); each intro comes from that skill's `SKILL.md` frontmatter `description`, one line each. A skill folder with no `SKILL.md`, or a global skill whose path is not a junction, is a finding on its own row.
+The skills roster is checked per `rsot/knowledge/boot-skills-roster.md`.
 
 ## BOOT-6 · The pull
 
-Per linear-law: LIN-1 (team + cycle), LIN-2 (cycle number from the pull), LIN-3 (carry-over line), LIN-4 (Done age-out), LIN-8 (Linear wins), LIN-11 (scope by seat).
+The pull runs per linear-law: LIN-1 (team + cycle), LIN-2 (cycle number from the pull), LIN-3 (carry-over line), LIN-4 (Done age-out), LIN-8 (task state is Linear's, session.md holds exists · blocked · next), LIN-11 (scope by seat).

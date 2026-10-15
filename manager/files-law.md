@@ -1,0 +1,49 @@
+# Files law
+
+Type: Law · how every doc in every repo is placed, named, headed, sized, updated and removed; pulled through rulesindex whenever a doc is created, filed, moved, renamed, split, retired or audited, and at repo spin-up. Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/files-law-rationale.md`, same rule IDs, open when a rule's judgment is in play.
+
+## 1 · Root, folders, truth homes
+
+- **FILE-1** A repo root holds exactly `CLAUDE.md` · `rulesindex.md` · `knowledgeindex.md` · `repolaneindex.md` · `session.md` · `learnrulesinbox.md`, the folders `rsot/` (rules/ · knowledge/) · `orgrules/` (company repos only) · one per project · `.claude/`, and machinery (git, CI, package and config files), plus in a sellable company repo a `README.md` of at most ten lines (never in HQ); no root `msot/`, vocabulary file or other doc.
+- **MGR-5** A missing standard root file or folder is created by the first session from `rsot/templates/standard-files.md` (Template type, pulled at creation) before any other work.
+- **MGR-45** Truth homes are `rsot/` (repo rules, company-wide knowledge) · a project's `msot/` (its master truth) · a module's `sot/` (its finalized truth), and only a doc there or an index row is cited as truth.
+- **FILE-2** One topic, one home, at the lowest level that shares it (MGR-45); a changed fact is edited in its home, never re-written as a new doc.
+- **FILE-3** `workspace/` (one per project), its `inbox.md`, sub-agent output and scratch are Draft (global card §6), never cited as truth, and an approved item is promoted into rsot/, msot/ or sot/.
+- **FILE-4** Org-wide rules are authored only in HQ `rsot/rules/` and reach company repos as `orgrules/`, a committed link to HQ rsot/rules never edited in a company repo; law text carries no code prefix, repo names or tickets and is published publicly; a company's own rules live in its own `rsot/rules/`.
+- **FILE-5** A repo never reads another company's files: it names a documented service interface or copies what it needs into its own msot/.
+- **MGR-16** Method: `rsot/knowledge/repo-folder-map.md`.
+- **MGR-17** Skills are global (authored in HQ `globalskills/`, junctioned to `~/.claude/skills`, usable everywhere) or repo (`<repo>/.claude/skills/<name>/`, used only in that repo), and a repo skill another repo needs is promoted to `globalskills/` with the repo copy deleted, never copied repo to repo.
+- **MGR-18** A `README.md` is the buyer landing (what this is, how to run it) and nothing else; `CLAUDE.md` is the repo card.
+
+## 2 · Items on disk
+
+- **FILE-6** An item with 2+ files gets an item folder `<code>-<slug>/`; a single-file item stays flat as `<code>-<slug>.ext` in the module folder.
+- **FILE-7** Migrations are sub-item files inside the data-layer item's folder, never module items.
+- **FILE-8** Every module folder carries its root doc `<module-code>-<slug>.md` (its design) and its `<module-code>-laneindex.md` (the item index, held only there, and any old→new code map).
+- **FILE-9** A skill built in HQ is self-contained: every file it needs lives in its own folder, it never reads another repo, and reusable parts are copied in at build time.
+- **FILE-17** Agent instructions live in HQ, a runtime repo holds only code and the skill manifest, and container-only skill folders are never junctioned into `~/.claude/skills`.
+
+## 3 · The standard files
+
+- **MGR-6** `CLAUDE.md` is the repo card: repo-specific facts only (skeleton: standard-files T4), no imported rule file (FILE-14), no global law, no history.
+- **MGR-7** `session.md` is replaced, never appended: one `# Session — YYYY-MM-DD` H1, then exactly `## What exists now` / `## Blocked` / `## Next`, present tense, state not story, an empty section reading `none`.
+- **MGR-8** `session.md` machine contract: it stays within its cap (global card §6) and no line starts with `STALE` or `IN REVIEW`.
+- **MGR-10** `repolaneindex.md` is the domain map (Index, register format T3) and wins locally (global card §3): one row per project and module with path, Linear, board and Sheet columns (DRAW-5 · SHEET-7), each module row pointing to its `<code>-laneindex.md`, and a shipped lane gets its row the day it ships.
+- **FILE-10** `rulesindex.md` holds one row per rule file (file · when it loads: always / on act X / on dispatch of seat Y · size) and `knowledgeindex.md` one per knowledge file in `rsot/knowledge/`; a file with no row, or a row with no file, is a defect (global card §3).
+- **MGR-43** The repo's vocabulary is one knowledge file, `rsot/knowledge/vocabulary.md` (a module gets `sot/<code>-vocabulary.md` only on its first own term), one row per term `term · meaning · owner (the one surface defining it) · notes`, each term written once at the lowest level that uses it, one word = one meaning per repo, and a new term added in the same pass that introduces it (DB-14), never in a back-fill sprint.
+- **MGR-13** Filename casing is law: `CLAUDE.md` `README.md` uppercase · `rulesindex.md` `knowledgeindex.md` `repolaneindex.md` `session.md` `learnrulesinbox.md` lowercase · `<CODE>-laneindex.md` and `<code>-<slug>.md` with the code exactly as in repolaneindex.
+
+## 4 · Header, type, size, update
+
+- **MGR-41** Every living doc opens with a first paragraph (global card §6) and nothing more: no Sections list, no "Last updated" stamp, no sentinel or "LOADED" line.
+- **FILE-11** Every doc is exactly one type with that type's cap from the global card §6 table, measured from the file at k = 1,000 characters (FILE-16); over cap is Risk and splits by topic inside the same type, never into a new type, and a doc fitting no type, or two, is split.
+- **MGR-12** Deprecation is deletion in the same pass, from code, docs, memory and tools; a surviving fallback carries a stated trigger and an expiry date.
+- **MGR-15** Specs live in the module's `sot/` (project-wide: the project `msot/`); `/docs` is not a doc home.
+- **FILE-12** A rule lives in exactly one file and no other file restates it, not even as a pointer (a bare rule-ID citation is allowed); a repo–HQ duplicate resolves to HQ, the repo copy deleted or promoted then deleted; cleanup deletes duplication and dead text outright, never a tombstone, one subagent per doc.
+- **FILE-13** A rule file's boundary follows its readers: same readers share a file, different readers get separate files each with its own rulesindex row, and no reader must load another seat's law to reach a rule.
+- **FILE-14** Rule files are pulled through rulesindex at the act they bind, by the skill or step that names the row, never left to memory or carried outside the act; standing law lives in the cards (global card, repo card operator section), never in a rule file.
+- **FILE-18** A rule citation must resolve; citing a rule ID absent from the named file is a defect the citer fixes.
+- **FILE-20** Research (external guide, method, course note, research result) is Knowledge captured in full, split by topic into files named by topic, under the 15k cap in `rsot/knowledge/` (company-wide) or the project `msot/` (one project), each with header and index row, never truncated and never embedded in a skill or rule, which cites it instead.
+- **FILE-19** One card per repo: no domain or sub-domain `CLAUDE.md`; a hard constraint binding the moment code in a folder is touched is a path rule in `.claude/rules/` with a `paths:` header (Law type, never in rulesindex).
+- **FILE-15** Rules live only in `.md` files loaded in context: agents never fetch rules from SQL, the memory folder is never a home for law or truth, and the Brain's SQL holds lifecycle ledgers and state only.
+- **FILE-16** Method: `rsot/knowledge/doc-enforcement.md`.

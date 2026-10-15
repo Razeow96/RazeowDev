@@ -2,6 +2,31 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-15 · updated rules to knowledeg
+- 2026-10-15 · Publish workflow repointed to rsot/rules/drawing; HQ-contract markers stripped from the public build; CFW-2 account identities moved to the asset register (run 38675887008 failed after the step 4 layout change)
+- 2026-10-14 · 2026-10-14
+- 2026-10-14 · updated global claude
+- 2026-10-14 · HQ rsot/rules: linear-law, figma-law, sheet-law created empty (owner 2026-10-14); content in chunk 2 (RAZ-745)
+- 2026-10-13 · HQ-M5.6 web team: seats, skills, engine design and preflight read the new site folder layout (pages/owner/, pages/ai/<tree>/; owner ruling 2026-10-13)
+- 2026-10-12 · Dev team stack packs: CFW-2 (two Cloudflare accounts, inject token on Workers deploys) and WIN-9 (write-tool escapes, byte-scan) promoted from memory so dispatched seats carry them; WIN-1/WIN-2 corrected to the owner's PowerShell 7.2 terminal (globalclaude §4)
+- 2026-10-11 · Web team on the free GitHub plan: the door's credential is CONTENT_REPO_TOKEN (App rows replaced in the credential perimeter and the engine design), `land <n>` on the Team lead and Optimizer cards, the Reviewer reads the check's verdict, preflight requires the token in the site env (RAZ-735)
+- 2026-10-11 · HQ-M5.6: preflight reads the store with the seat token through the engine's SiteStore (the turn has no service key); credential perimeter and access table to the built flow (RAZ-735)
+- 2026-10-11 · HQ-M5.6: seat cards call the door through door.sh, access table and credential perimeter §6 turn isolation, keys per seat per website (RAZ-739)
+- 2026-10-11 · dataforseo_costs.py: prices from the broker's table, tasks capped at 10, no local copy (RAZ-739)
+- 2026-10-11 · HQ-M5.6 chunk 4 P9: seat cards take the new keys, verbs, request files, store pulls and fourth-week review (optimizer 7,996 · reviewer 7,078 · team lead 7,990); CATALOGUE 7,044; access table to the new engine; preflight uses the new seats, the site folder's trees and the site-folder brief (RAZ-739)
+- 2026-10-11 · HQ-M5.6 scripts: backlink and Bing scripts call the key broker only; local key reads deleted; Moz and Keywords Everywhere refuse until a route is provisioned (RAZ-739)
+- 2026-10-11 · Seat cards: senior professional roles (Go-to-Market SEO Lead · SEO, AEO and GEO Specialist · Technical SEO Auditor and IT Support) (owner 2026-10-11, RAZ-739)
+- 2026-10-11 · DRAW-37 docs tree: the approved method (docs-only nodes, one skills node, new-turn restart, pull-after-job, code-enforced rules as pointers) (owner 2026-10-11, RAZ-742)
+- 2026-10-11 · HQ-M5.6 web team trim to the approved flow: team law deleted (rules live in the website's COOSWebteamrules.md); seat cards = scope + router + state, memory, tools indexes (team lead 6,877 · optimizer 7,328 · reviewer 5,836); 15 skills trimmed to <= 8,000 (159,710 to 86,044); pagespeed_check.py and crux_history.py deleted (speed comes from the nightly audit); code-enforced rules become pointers (RAZ-742, RAZ-739)
+- 2026-10-11 · Team lead card: router (event → job → pull → do → output), state path index, memory path index, tools and skills index; reports pulled only when the job is done; hard rules folded into job scope (owner 2026-10-11, RAZ-739)
+- 2026-10-11 · DRAW-37: mandatory set = sum of caps; state pulled, never pasted (RAZ-742)
+- 2026-10-11 · HQ-M5.6 web team clean-up: unused indexnow script deleted, duplicate preflight probe dropped, access table and perimeter brought to the code, cards say seats read state via store_cli, history removed (RAZ-742)
+- 2026-10-11 · qc-checklist: site brief readable from main is a Team lead preflight line (moved from the runner) (RAZ-739)
+- 2026-10-11 · Drawing law DRAW-37: the docs tree method (class table, node card, running-total flow, drift lines) (owner ruling 2026-10-11, RAZ-742)
+- 2026-10-11 · HQ-M5.6 web team docs clean-up: team law 25k to 4k chars, seat cards index skills and scripts, engine-design becomes the access table, skills CATALOGUE replaces VENDOR (RAZ-742)
+- 2026-10-11 · Drawing law: new page kind 7 · Docs tree — load order, rights and size caps (owner ruling 2026-10-11, RAZ-739)
+- 2026-10-11 · HQ-M5.6 web team: seat cards move to seats/ (optimizer, reviewer, team-lead); Builder seat renamed Optimizer (RAZ-738)
+- 2026-10-10 · HQ-M5.6 web team cards: SEO technical workflow approved 2026-10-10 (RAZ-712)
 - 2026-10-08 · Web team daily loop (owner rulings 2026-10-08, RAZ-712, board pages 3.4.3 / 3.5.2 / 3.5.4 / 3.3.1.3): the Team lead starts each day with priority and preflight, the Reviewer reads the overnight audit and hands the Builder 3-5 findings, the uptime alert wakes the Reviewer (revert or tell the owner), one short site brief per turn, preflight line "uptime watch alive", seat history; team law, three cards, engine design, qc-checklist skill and probe, registry. Engine release v2.2.0.
 - 2026-10-07 · Web team agent identity = GitHub App razeow-webteam (owner ruling 2026-10-07): one-hour token per run, Contents RW, Pull requests RW, Metadata R, never a code owner or bypass actor; credential perimeter, engine design, team law, Reviewer card, preflight probe and registry. Engine release v2.1.0.
 - 2026-10-07 · Web team to three seats for RS2-M4 (owner rulings 2026-10-07, board "Website system design"): Builder, Reviewer, Team lead cards replace agents A-D; team law, engine design, credential perimeter, preflight and the new article-image skill; site-store view lock-down (changes_cooking revoked from anon/authenticated, security_invoker) and the RS2-M4.4 migration note; registry rows. Engine release v2.0.0.

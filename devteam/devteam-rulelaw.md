@@ -1,12 +1,11 @@
 # Dev team — Rule-system law (LEAD §6)
 
-REFERENCE class (structure-law): read when authoring, promoting, tagging or retiring a dev rule; the law lives in `teamlead.md`.
+Type: Law · how a dev rule is written, tagged, promoted, overridden and retired; pulled through rulesindex when authoring, promoting, tagging, overriding or retiring a dev rule. Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/devteam-rulelaw-rule-rationale.md`, same rule IDs, open when a rule's judgment is in play.
 
-- **LEAD-11** Grammar: **MUST/NEVER** = deviation is a defect; **SHOULD** = deviation allowed with the reason in the ticket. Deviating from a MUST requires an inline greppable marker `<ID>-ok: <why>` at the site.
-- **LEAD-12** Every rule carries its enforcement tag. Prose is a debt marker — /auditceo lists prose rules that could climb to a validator, FK, or hook.
-- **LEAD-13** Promotion is a move, never a copy: repo learnrule flagged with its `suggest: <seat>` destination (one flag string org-wide — MGR-9 · manager-templates T2 · the sweep matches this and nothing else) → CEO sweep rules it → ID assigned in HQ → the local row is **deleted** in the same pass (MGR-9 inbox — a codified rule's row is duplication). Dev law is never authored in a repo.
-- **LEAD-14** Rules are HQ-free by construction: genericized at promotion — no repo names or tickets in law text, evidence as one-line pointers; provenance ledger stays HQ-side. A sold repo ships the seat files with zero redaction.
-- **LEAD-15** Every rule naming a concrete tool/vendor carries its tag (…); retiring a tool = one grep. Any rule containing "until X" carries a review-by date or named trigger; overdue = audit finding.
-- **LEAD-16** → cite MGR-31 (a rule citation must resolve); IDs are append-only per seat register, retired numbers never reused.
-
-`DEV RULE-SYSTEM LAW LOADED`
+- **LEAD-11** **MUST/NEVER** means deviation is a defect and **SHOULD** means deviation is allowed with the reason in the ticket, and deviating from a MUST requires an inline greppable marker `<ID>-ok: <why>` at the site.
+- **LEAD-12** Every rule carries its enforcement tag, and /auditceo lists the prose rules that could climb to a validator, FK or hook.
+- **LEAD-14** Rules are HQ-free by construction (FILE-4) — evidence as one-line pointers, the provenance ledger kept HQ-side, a sold repo shipping the seat files with zero redaction — and the public mirror's sanitize gate strips section H, evidence brackets and org tokens before publish.
+- **LEAD-15** Every rule naming a concrete tool or vendor carries its tag (…), and any rule containing "until X" carries a review-by date or named trigger, an overdue one being an audit finding.
+- **LEAD-26** HQ dev law is the default in every repo: a repo overrides one rule only by a named, dated exception line in its own rule file (`<ID> exception YYYY-MM-DD: <what differs and why>`), and an undocumented difference loses to the HQ rule.
+- **LEAD-27** A seat rule file uses role-prefixed IDs (`ARCH-n`, `BE-n`…), one imperative rule per line (LRN-5, FILE-12), with cross-seat seams stated in the header.
+- **LEAD-28** An agent definition (`HQ-M5-team/HQ-M5.3-globalagents/<name>.md`) is a thin persona wrapper, never the rules — frontmatter (name · description · tools · model · `omitClaudeMd: true`) plus who it is, its read order (BOOT-2), its input contract (the brief), its output contract (report to the lead) and its hard nevers — it exists only where isolation pays, never as a developer-in-full subagent, and a sold repo keeps the rule files, never the agent definitions (BOOT-3).

@@ -1,4 +1,4 @@
-# sync-team.yml — keep your /team rules current with RazeowDev
+# sync-team.yml — keep your orgrules/ rules current with RazeowDev
 #
 # Copy this file into YOUR repo at .github/workflows/sync-team.yml
 # It checks weekly (and on manual trigger) whether the upstream rules changed,
@@ -31,9 +31,10 @@ jobs:
           git clone --depth 1 https://github.com/Razeow96/RazeowDev /tmp/RazeowDev
           UPSTREAM_TAG=$(git -C /tmp/RazeowDev describe --tags --always 2>/dev/null || echo "latest")
           echo "UPSTREAM_TAG=$UPSTREAM_TAG" >> "$GITHUB_ENV"
-          mkdir -p team
-          rsync -a --delete /tmp/RazeowDev/devteam/ team/devteam/
-          rsync -a --delete /tmp/RazeowDev/manager/ team/manager/
+          mkdir -p orgrules
+          rsync -a --delete --exclude 'devteam' --exclude 'drawing' /tmp/RazeowDev/manager/ orgrules/
+          rsync -a --delete /tmp/RazeowDev/devteam/ orgrules/devteam/
+          rsync -a --delete /tmp/RazeowDev/drawing/ orgrules/drawing/
 
       - name: Open PR if rules changed
         uses: peter-evans/create-pull-request@v6
