@@ -1,6 +1,6 @@
 # Drawing law · Index and legend
 
-Type: Law · index and legend: how it is drawn, and the conventions every kind obeys, in every repo · pulled through rulesindex when drawing any kind, together with that kind's file. Update: one rule = one line; replace the line, never add beside it; IDs are append-only.
+Type: Law · index and legend: how it is drawn, and the conventions every kind obeys, in every repo · pulled through rulesindex when drawing any kind, together with that kind's file. Update: one rule = one line; replace the line, never add beside it; IDs are append-only. The reasoning and the incident behind every DRAW rule, across all nine drawing files: `rsot/knowledge/drawing-law-rationale.md`, same rule IDs; the measured shape of each kind on the approved boards: `rsot/knowledge/figma-drawing-recipes.md`.
 
 Board-wide law (which boards, page order, approval, links) is figma-law. Cited, never redefined here: FIG-2 page model · DRAW-2 native objects first · DRAW-3 screenshot, then hand over · DRAW-4 one name, four surfaces · DRAW-5 board link · DRAW-6 latest only · DRAW-7 the drawing moves with the change · DRAW-29 the board wins, edits proposed as a table, violet `Update <date> (owner-ruled)` note on top of each changed page, newest first.
 
@@ -11,6 +11,7 @@ Board-wide law (which boards, page order, approval, links) is figma-law. Cited, 
 - **DRAW-27 One section, one question.** A section answers one question and its name is that question. A section never mixes kinds; a mechanism lives on the page of the module that owns it, never duplicated.
 - **DRAW-28 One altitude per kind.** Domain (ERD, context map) → event key (CDT) → feature step (flow) → column (schema) → screen and button (user flow). A kind drawn one level too deep (a table-level ERD, a column-level CDT) is the most common drift and is always rejected; unsure → propose the altitude in chat first.
 - **DRAW-37 Complete = every kind exists and agrees.** Together the pages are the system requirements & design; no separate prose SRD. A page that disagrees with another is a defect on the newer page. Completeness is checked kind by kind before a build is baselined.
+- **DRAW-49 Copy the shape.** The first section of a kind on a board sets its shape (labels, geometry, card layout); every later section of that kind copies it from the board, read through the MCP, with the kind's law file and `rsot/knowledge/figma-drawing-recipes.md` pulled first, never redrawn from memory; a section whose shape differs from its siblings is a defect on the newer section.
 
 ## Page 0 · Index
 
@@ -23,7 +24,7 @@ Board-wide law (which boards, page order, approval, links) is figma-law. Cited, 
 
 ## Colour and honesty
 
-- **DRAW-20 One legend.** Green = built and observed working · yellow = shipped in the old shape, rebuilt in the target · blue = proposed, not ruled until the owner says so on the drawing · red = broken, or a key leaving a domain with nobody wired to receive it · gray = retired, shown only to mark the drop · purple = a port or an outside system. Headers in the saturated fill, rows in the light variant.
+- **DRAW-20 One legend.** Green = built and observed working today · blue = approved: built and not live yet, or not built yet, the page's update note saying which · yellow = built but thin, or an open owner decision · red = missing, broken, or a key leaving a domain with nobody wired to receive it · grey = deleted by the approved design, shown only to mark what goes · white = an actor or a decision · purple = a port or an outside system. Headers in the saturated fill, rows in the light variant (board legend approved 2026-10-11, the law aligned 2026-10-15).
 - **DRAW-39 Legend marks beyond colour.** White box = an actor (owner, visitor) · solid arrow = an event crossing a domain · dashed arrow = a read, a tick or a poll · arrow label = event · version · what rides on it · a drop edge ends with its blast radius (DRAW-12). Every mark used on the board is in the page 0 legend; a mark not in it is not drawn.
 - **DRAW-22 Colour is a claim.** One colour system per board. Green means observed working, red means observed or reasoned break; a guessed colour is a lie.
 - **DRAW-16 Target only.** Design pages hold the target the owner approved and the open proposals, nothing else; the shipped shape is not drawn into them. AS-IS is drawn only when the owner asks for a gap drawing, on its own page of a separate file, from live-verified state (database, triggers, deployed code), never docs. Nothing is built from a target until it is approved and its gap written to Linear.

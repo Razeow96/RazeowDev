@@ -2,7 +2,7 @@
 
 Type: Law · functional & non-functional flow: how it is drawn, in every repo · pulled through rulesindex when drawing a functional & non-functional flow, together with index-and-legend.md. Update: one rule = one line; replace the line, never add beside it; IDs are append-only.
 
-Answers: how each feature of a module works, and how well. Sits as sections on the module's page (FIG-2). Seat: architect, `/architecture-ddd-draw`. Altitude: feature step (DRAW-28). The functional flow is a native flowchart; the cards are hand-built (figma-law DRAW-2).
+Answers: how each feature of a module works, and how well. Sits as sections on the module's page (FIG-2). Seat: architect, `/architecture-ddd-draw`. Altitude: feature step (DRAW-28). Flow and cards are hand-built inside the feature's section (figma-law DRAW-2: a native flowchart cannot live in a section); the measured shape to copy is `rsot/knowledge/figma-drawing-recipes.md` (DRAW-49).
 
 - **DRAW-8 Layout.** One section per feature on the module's page, one drawing per feature: the functional flow (how it works) on top, its non-functional cards (how well) under it. The section shows only the module's own steps; anything entering or leaving is ONE purple port box named with the other module's full code and the event (`→ <code> <feature> · <Event> vN` or `← <code> · <Event> vN`), and that code is the link to its page. No cross-module arrow inside a module page.
 - **DRAW-9 Feature numbering.** Features carry the module's item codes `<code>.<k>`, top → down, and cards carry `<code>.<k>.<j>`, so an edge or a card reads unambiguously.

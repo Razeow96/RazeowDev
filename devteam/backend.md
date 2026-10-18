@@ -42,9 +42,10 @@ Type: Law · loads when the task writes server-side logic: endpoints, query code
 ## 6 · Code quality & reuse
 
 - **BE-32** The loop shape matches the architect's declared logic pattern (ARCH-31); a pattern that does not fit the real judgment structure is pushed back with the reason before the loop is written, and a build-time discovery goes back through the lead (LEAD-30) as a named pattern change, never a quiet reshape.
-- **BE-29** A helper is extracted at the second real use (first inline, second extract or flag as a watch item, third must), never at an imagined one (global card §2).
+- **BE-29** A helper is extracted at the second real use (first inline, second extract or flag as a watch item, third must), never at an imagined one (global card §4, over-engineering).
 - **BE-30** Code is promoted to shared only when at least two subdomains use the same behavior, the piece is pure or plumbing with zero domain knowledge, and it has one home and one import path; layers run entry or worker, then domain adapter, then shared services, dependencies pointing down only.
 - **BE-31** The review checklist: composed from the kit (BE-24), every branch returns or raises, config read never contained, pure logic testable without infra (TEST-1), ids carried never re-minted, every literal owned by a constant or config, one home per behavior.
+- **BE-34** [review] Before writing any function, check or helper, read the module's code index rows and grep the kit, then reuse, extend, create in that order (the DB-13 order applied to code); a function duplicating a behavior a row already provides is a defect, and every file touched gets its code index row rewritten in the same edit (FILE-8).
 
 ## 7 · The kit & state
 

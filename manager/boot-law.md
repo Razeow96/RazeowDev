@@ -23,7 +23,7 @@ Every boot skill prints and verifies this one list, never a copy of its own (/lo
 - **Main loop, in load order:** `~/.claude/CLAUDE.md` (global card) · `CLAUDE.md` (repo card) · `rulesindex.md` · `knowledgeindex.md` · `repolaneindex.md` · `session.md` · `learnrulesinbox.md`.
 - **Loaded by Claude Code itself, not by the skill:** skill descriptions · agent descriptions · auto-memory `MEMORY.md` · any `.claude/rules/*.md` without a `paths:` header.
 - **Dispatched seat** (`omitClaudeMd: true` on every seat card): the brief · seat card · seat rule file (+ stack pack) · the knowledge files its rules cite, on request. No global card, no repo card, no indexes: the brief carries the repo facts the task needs.
-- **Never at boot:** rule files, knowledge files, module lane indexes, path rules — each loads at the act, folder or module that binds it.
+- **Never at boot:** rule files, knowledge files, module lane indexes, module code indexes, path rules — each loads at the act, folder or module that binds it.
 
 ## BOOT-3 · Drift + link checks
 

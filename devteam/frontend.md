@@ -10,6 +10,7 @@ Type: Law · loads when the task writes screen or browser code. Visual and desig
 ## 2 · The component library
 
 - **FE-10** Screens are built from the shared component library, never hand-rolled (UX-2): each shared component carries a declared prop contract, a new component enters at the BE-29 threshold, and a hand-rolled variant of something the library has is a defect (BE-24).
+- **FE-21** [review] Before writing any hook, utility or component, read the module's code index rows and the component library, then reuse, extend, create in that order (BE-34, FE-10); a hook or utility duplicating what a row already provides is a defect, and every file touched gets its code index row rewritten in the same edit (FILE-8).
 - **FE-7** Screens never import each other or the app shell; cross-screen coordination goes through the shared kit (ARCH-20).
 
 ## 3 · Data & state

@@ -2,6 +2,7 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-18 · web team deployment
 - 2026-10-15 · HQ-M1.3 steps 5-7: cards, rule split, skills, org check and write hook, folder rename (RAZ-748 to RAZ-750)
 - 2026-10-15 · updated rules to knowledeg
 - 2026-10-15 · Publish workflow repointed to rsot/rules/drawing; HQ-contract markers stripped from the public build; CFW-2 account identities moved to the asset register (run 38675887008 failed after the step 4 layout change)

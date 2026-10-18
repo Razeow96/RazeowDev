@@ -1,8 +1,0 @@
-# Drawing law · User flow
-
-Type: Law · user flow: how it is drawn, in every repo · pulled through rulesindex when drawing a user flow, together with index-and-legend.md. Update: one rule = one line; replace the line, never add beside it; IDs are append-only.
-
-Answers: one journey — its steps and branches, then its screens wired by button, web and mobile. Sits as a section `User Flow - System Flow & UX — <journey>` on the module's page (FIG-2), one section per journey. Seat: UX/UI designer, `/uxui-userflow-draw`. Altitude: screen and button (DRAW-28). Intent is confirmed first (UX-10, UX-18).
-
-- **DRAW-24 System flow part.** The header names the persona, goal and fear, the main-path step count and the branches. Main path first, in the persona's words, never codes; then the empty, error and permission branches, each ending somewhere real. A path longer than its stated count is a finding, not a drawing.
-- **DRAW-36 UX part.** Under the system flow in the same section: two lanes, web (desktop) on top and mobile under it, the same journey. One screen per step and per branch, each tagged with its system-flow step and route. Every arrow leaves the button that leads to the next screen and carries that button's name; a decision outside the product (a platform's consent screen) is a purple outside box fanning out to the branch screens. Controls are drawn as controls (button, input, chip, tick, radio, drop-down, app bar) and every control traces to a column on the data schema sections. Back on every step is stated once in the lane legend, not drawn; on mobile the primary button sits in a pinned bottom bar; the look follows the repo's design law. Loose screen pictures without wired buttons are not a user flow.

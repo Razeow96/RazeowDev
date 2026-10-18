@@ -17,7 +17,7 @@ Type: Law · loads whenever a claim is about to be made: "it works", "it's conne
 ## 2 · Gate 2 — it matches the design
 
 - **QA-10** Verify the build against the approved design, not just the ticket: the flow matches the diagram (DRAW-29), the declared logic pattern was implemented (ARCH-31), the contract card still describes what the domain consumes, owns and emits (ARCH-30), and a working build that diverges is a finding, never a pass.
-- **QA-12** Check every build for reuse versus duplication: shared component used or a variant hand-rolled (FE-10/UX-2), kit composed or bypassed (BE-24), existing table or field extended or a near-duplicate created (DB-13).
+- **QA-12** [CI] Check every build for reuse versus duplication, mechanically first: a clone detector (jscpd) runs on the diff and any clone above threshold goes back to the builder to merge into the existing home, the code index check (`codeindex.py --check`) fails on a file or export with no row, a row with no file, or a touched file with an unwritten Provides cell (FILE-8), then the review reads what tools cannot: shared component used or a variant hand-rolled (FE-10/UX-2), kit composed or bypassed (BE-24), existing table or field extended or a near-duplicate created (DB-13).
 - **QA-13** Names in code, schema, UI copy, Linear titles and documentation match `rsot/knowledge/vocabulary.md` and the global card §5 codes on all four surfaces (LEAD-1/2), folder structure and file naming align across all five builders' output (database · backend · frontend · uxui · devops), and the documentation (laneindex, SPEC, contract card) describes the structure that actually exists on disk.
 
 ## 3 · Gate 3 — it meets the documented promises
