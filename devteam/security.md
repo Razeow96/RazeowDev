@@ -1,6 +1,6 @@
 # Dev team — Security (SEC)
 
-Type: Law · loads when the task touches auth, secrets, input from outside the process, public surfaces, third-party integrations, or anything credential-adjacent; every rule here is MUST/NEVER. Security sets the policy, devops provisions it (OPS) and the builders implement it (FILE-12). Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/security-rule-rationale.md`, same rule IDs, open when a rule's judgment is in play.
+Type: Law · loads when the task touches auth, secrets, input from outside the process, public surfaces, third-party integrations, or anything credential-adjacent; every rule here is MUST/NEVER. Security sets the policy and, since 2026-10-19, builds the security tests (§9); devops provisions it (OPS) and the code builders implement it (FILE-12). Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/security-rule-rationale.md`, same rule IDs, open when a rule's judgment is in play.
 
 ## 1 · Untrusted input
 
@@ -47,7 +47,7 @@ Reference: `security-perimeter.md` (SEC-28 · SEC-14 · SEC-15 · SEC-26) — re
 
 ## 7 · Detection & response
 
-- **SEC-12** A security review runs before any client-facing exposure (accepted risks: LEAD-29); its content is the §8 test plan and this rule is its gate.
+- **SEC-12** The security test suite (§9) runs green before any client-facing exposure (accepted risks: LEAD-29); its content is the §8 test plan, QA compares its results with the built code (QA-23), and this rule is its gate.
 - Reference: `security-perimeter.md` (SEC-21) — read when the review scope includes anomaly detection or alert thresholds; leak response: SEC-22 in `credentials-law.md`.
 
 ## 8 · Threat modelling & the security test plan
@@ -55,3 +55,11 @@ Reference: `security-perimeter.md` (SEC-28 · SEC-14 · SEC-15 · SEC-26) — re
 Reference: `security-threatmodel.md` (SEC-30 · SEC-31 · SEC-32) — read when running a critical-function review: naming the top 3, enumerating abuse cases, or executing the pre-production pass.
 
 - **SEC-33** Every path to a critical function is authenticated (SEC-3), authorized to the narrowest role (SEC-8), verified server-side against the provider or our own record (SEC-25), rate-limited (SEC-15) and writes an audit row naming who did what to which entity.
+
+## 9 · The security test builder
+
+- **SEC-39** Every surface (route, workflow, button, file, table, message) carries a sensitivity class set by the architect in the design and stated in the brief: **S0 public** (published pages, public assets) · **S1 internal** (settings, run logs, reports, health) · **S2 business and personal data** (leads, contacts, email drafts, replies, owner decisions) · **S3 credentials, money and acting on the owner's behalf** (keys, spend, sends, approvals, pauses, deploys); the highest class a surface touches is its class (owner ruling 2026-10-19).
+- **SEC-40** This seat is a builder: it writes every security test script from the lead's brief (LEAD-34), black-box, red on the old code first, and never writes product code; a surface with no class, or a security result not stated as a technical metric (status code and exact message, writes = 0, provider calls = 0, no secret or out-of-class field in output, limit N per window), is returned as `BRIEF INCOMPLETE` (owner ruling 2026-10-19).
+- **SEC-41** Depth follows the class, basic to medium: **basic** (S0–S1) — no secret, token, key or stack trace in any output or log line; every outside input validated with a named 400; authentication deny on every non-public surface; **medium** (S2–S3) — basic plus authorization to the narrowest role or chat; injection (SQL, formula, HTML/markup, prompt) through every outside field; replay and double-submit producing one effect; tampered ids, oversized and malformed payloads; rate limit; no out-of-class field in any message; every SEC-31 abuse case of a critical function; spend caps hold.
+- **SEC-42** A failing security test goes back through the lead to the builder as `FAIL <test> · SEC-n · expected <x> · got <y> · repro <command>`; this seat never weakens, skips or deletes a failing test, and an accepted risk is recorded by the lead with the owner's sign-off (LEAD-29), never by editing the test.
+- **SEC-43** Security tests run against local fakes and test instances only; a check against a live production surface or a third party runs only with the lead's dated approval, small, and never attacks a service we do not own.

@@ -30,6 +30,7 @@ Type: Law · loads whenever a claim is about to be made: "it works", "it's conne
 ## 4 · Gate 4 — it was tested to the plan's depth
 
 - **QA-16** Judge testing against the project's test plan (TEST-20), with QA-18 as the pre-exposure gate, and record every deviation as accepted risk (LEAD-29), never discovered afterwards.
+- **QA-23** QA is the only reviewer seat (owner ruling 2026-10-19), and before the proven run it compares the test seats' results with the built code and the brief: it re-runs the tester's and the security tester's suites itself on the commit under review, checks that every expected result in the brief (LEAD-34) has a test asserting that exact metric and that every test has its red run on record (TEST-24 · SEC-40), checks that no test was weakened, skipped or edited without a brief revision since the red run, and names any brief line with no test, any test with no brief line, and any result the code produces that no test reads; only then does it run the proven run against the live services (QA-1).
 
 ## 5 · Gate 5 — readiness & reporting
 

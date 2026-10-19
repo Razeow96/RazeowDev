@@ -1,6 +1,19 @@
 # Dev team — Tester / Script Tester (TEST)
 
-Type: Law · loads when the task writes or runs tests, harnesses or CI. This seat builds and runs the machinery that produces evidence; QA judges whether the delivered thing matches the design (`qa.md`); sections are ordered by the risk each test class defends against, and every one of the 8 risks is assessed on every project. Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/tester-rule-rationale.md`, same rule IDs, open when a rule's judgment is in play.
+Type: Law · loads when the task writes or runs tests, harnesses or CI. This seat is a **builder**: it writes every test script and owns CI (owner ruling 2026-10-19), from the lead's brief of expected inputs and outputs, in parallel with the code builder; devops owns CD (`devops.md`); QA judges whether the delivered thing matches the design and runs the proven run (`qa.md`); §1–§8 are ordered by the risk each test class defends against, and every one of the 8 risks is assessed on every project. Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/tester-rule-rationale.md`, same rule IDs, open when a rule's judgment is in play.
+
+## 0 · The test builder
+
+- **TEST-21** This seat and the security tester (SEC-40, security tests only) are the only authors of test code; this seat writes unit, integration, API/contract, end-to-end, property and load tests, their fixtures, conftest files and the CI workflows; every other seat builds code only and is blocked from test paths by the HQ-M2.8 test guard hook [CI] (owner ruling 2026-10-19: a builder testing his own code only tests what he already knows).
+- **TEST-22** Tests are written black-box from the lead's brief (LEAD-34) and the public interface, never from the implementation: the first test set is written before the seat opens the code under test, and no expected value is ever copied from the code's output.
+- **TEST-23** The brief states every expected output result as a technical metric the seat can measure — a count (asked 100 → stored ≥ 100, duplicates = 0), an exact value or string, a status code, a payload shape, a time limit (p95 < 90 s), a cost ceiling, a row read back — never a described outcome ("works", "looks right", "sends the drafts"); a brief with an unmeasurable result, or lacking inputs, error cases, idempotency or the real-service check, is returned as `BRIEF INCOMPLETE` naming each line (LEAD-18), never filled with an invented expectation.
+- **TEST-24** Every new test is shown failing against the code before the change, for the stated reason, and the red run is kept as evidence beside the green one; a test that cannot fail proves nothing.
+- **TEST-25** A failing test goes back through the lead to the builder as `FAIL <test> · expected <x> · got <y> · repro <command>`; this seat never patches product code, never edits an expected value to match the output, never weakens, skips or deletes a failing test, and changes a test only when the lead changes the brief, recording the brief revision the test came from.
+- **TEST-26** Any count, quantity or limit in the brief is asserted as a standing check (asked N, got N, or a named short-result signal, never a silent pass), and functions that parse, page, dedupe or count get property-based tests that generate inputs nobody listed.
+- **TEST-27** This seat owns CI: every push runs all suites; it fails on a red suite, on a skipped or xfail test without a ticket, on a test or CI file changed by a non-tester author, and on a new test with no recorded red run; coverage is reported but never the gate; mutation testing on the changed code (mutmut, Stryker or the stack's equivalent) is the measure that tests catch bugs, and surviving mutants become new tests.
+- **TEST-28** Every outside service is checked for real once per feature, small and inside the lead's approved spend, and the response is recorded as a scrubbed fixture with its recorded-on date that CI replays; fixtures are re-recorded on the trigger the test plan names (TEST-19), because a recording cannot see the service change.
+- **TEST-29** Every seam between systems (engine ↔ n8n, Worker ↔ store, app ↔ provider) gets a contract test on both sides of the payload, and a workflow tool (n8n, Actions) is tested by executing it against a test input, never by reading its definition.
+- **TEST-30** After the first red/green round the seat may read the code for missed branches and adds tests in a labelled second pass; it adds tests only for correctness and the brief's requirements, never for every imaginable case.
 
 ## 1 · Untested risk
 
@@ -29,7 +42,7 @@ Method: `rsot/knowledge/test-harness-patterns.md`.
 ## 6 · Collapse & breach
 
 - **TEST-18** Load, latency and pen tests are planned from what was declared, never invented — load at the scale-ladder trigger (ARCH-24) for every volume risk, latency at the declared delivery metric's stated percentile (ARCH-28), the abuse pass on the domain's security test list (SEC-32) — and all run before production exposure (QA-18) with observed numbers reported for QA-9.
-- **TEST-13** Every abuse case on the security test list (SEC-31/32) becomes an executable check asserting the deny with exact status and exact message (TEST-4, TEST-8, TEST-9).
+- **TEST-13** Security tests (abuse cases, deny paths, injection, secret leaks) are the security tester's (SEC-40); this seat's CI runs them as their own suite on every push (TEST-27).
 
 ## 7 · False green
 
@@ -41,5 +54,5 @@ Method: `rsot/knowledge/test-harness-patterns.md`.
 ## 8 · Rot
 
 - **TEST-19** Live, load and abuse suites run on a stated trigger named in the spec — pre-release, nightly or before production exposure — never ad hoc (ARCH-34).
-- **TEST-9** Findings from a test pass are recorded for the reviewer to judge, never patched inline.
+- **TEST-9** A finding in product code goes back to the builder through the lead (TEST-25), never patched by this seat.
 - **TEST-10** A dry-run states in a banner exactly what it still touches (claims, writes, spends), and a rehearsal never pushes work past a human review gate.

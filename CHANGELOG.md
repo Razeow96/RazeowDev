@@ -2,6 +2,8 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-19 · Web team: law WEB-7/11/18/20/21 amended (team-change window, no waiting for deploys, plain text, task card and acknowledgement, context packet), Team lead router as five weekly turns, seat indexes with real commands, preflight through the door, OPS-26 three branches, BE-34 edit-never-stack, the HQ instruction copy deploys to the VPS from publish-team.yml with the end-to-end proof, asset register and credential perimeter rows (owner mandate 2026-10-19)
+- 2026-10-19 · Web team law WEB-20 (hand off by a HANDOFF line, never a handle) and WEB-21 (start from the runner's context, resume an unfinished turn); the three seat cards hand off by HANDOFF line (owner ruling 2026-10-19)
 - 2026-10-19 · Web team wiring after the turn-user audit: preflight runs the door through door.sh like the seats, seat indexes name real commands and columns, the SEO wrapper is executable with LF endings (.gitattributes keeps Linux scripts LF), branch rule OPS-26 (owner, team, main; owner ruling 2026-10-19)
 - 2026-10-19 ·  2026-10-18
 - 2026-10-18 · web team deployment
