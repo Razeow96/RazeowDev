@@ -2,6 +2,7 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-19 · Credential perimeter: Pexels and Bing Webmaster keys set on the broker 2026-10-19
 - 2026-10-19 · Web team scripts: qc_check allowed through the wrapper; content_humanize does leverage→use; content_verify counts 'In <year>,' as a temporal claim; dataforseo_costs fails closed on an unreadable price table (production script proof 2026-10-19)
 - 2026-10-19 · seo-dataforseo skill: in a seat turn there are no MCP tools — stored pulls and the price script only (production skill proof 2026-10-19)
 - 2026-10-19 · Skills catalogue: the two scripts we do not carry are named as absences, not as files
