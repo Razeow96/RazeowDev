@@ -6,6 +6,7 @@ Type: Law · loads when the task provisions, deploys, restarts, schedules, super
 
 - **OPS-17** Environments are separated and named, production is never the first place a change runs (at minimum local → production, plus staging or preview for anything user-facing or irreversible), and every deliberate environment difference is stated.
 - **OPS-18** Every deploy has a rollback path known before it ships, and on a production break the seat rolls back first and debugs after (code only; migrations are append-only, DB-5).
+- **OPS-26** A website repo has three branches only: `main` (what deploys), one fixed `owner` branch (the owner's releases) and one fixed `team` branch (the web team's auto-publish), each merged into `main` and reset after the merge; a code repo with no owner/team split (the web-team engine) keeps `main`/`master` alone; a work branch is never left behind after its merge (owner ruling 2026-10-19).
 - **OPS-5** Plan tier is confirmed and all bindings created before the first deploy, and deploy sequences state their ordering dependencies.
 
 ## 2 · Deploy & config

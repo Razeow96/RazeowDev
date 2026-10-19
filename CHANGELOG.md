@@ -2,6 +2,7 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-19 · Web team wiring after the turn-user audit: preflight runs the door through door.sh like the seats, seat indexes name real commands and columns, the SEO wrapper is executable with LF endings (.gitattributes keeps Linux scripts LF), branch rule OPS-26 (owner, team, main; owner ruling 2026-10-19)
 - 2026-10-19 ·  2026-10-18
 - 2026-10-18 · web team deployment
 - 2026-10-15 · HQ-M1.3 steps 5-7: cards, rule split, skills, org check and write hook, folder rename (RAZ-748 to RAZ-750)
