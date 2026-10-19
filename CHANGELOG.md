@@ -2,6 +2,7 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-19 ·  2026-10-18
 - 2026-10-18 · web team deployment
 - 2026-10-15 · HQ-M1.3 steps 5-7: cards, rule split, skills, org check and write hook, folder rename (RAZ-748 to RAZ-750)
 - 2026-10-15 · updated rules to knowledeg
