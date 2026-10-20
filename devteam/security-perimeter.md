@@ -17,7 +17,7 @@ Type: Law (perimeter rules for `security.md`) · pulled through rulesindex when 
 
 ## §7 · Detection & response
 
-- **SEC-21** Failed-auth spikes, unfamiliar access (new IP/geo/device on an admin surface) and unusual spend or volume are each watched against a stated threshold on the record BE-19 provides, with the alert routed per OPS-23.
+- **SEC-21** Failed-auth spikes, unfamiliar access (new IP/geo/device on an admin surface) and unusual spend or volume are each watched against a stated threshold on the record BE-19 provides, with the alert routed per OPS-23; an alert is a notification only, its threshold is never a settings row, and it never refuses or stops a run (owner ruling 2026-10-20).
 
 ## Secret-scan pattern list (SEC-24)
 

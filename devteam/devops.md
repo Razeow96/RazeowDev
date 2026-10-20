@@ -50,5 +50,5 @@ Type: Law · loads when the task provisions, deploys, restarts, schedules, super
 
 ## 8 · Cost & capacity
 
-- **OPS-21** Monthly run cost is attributed per service, reviewed on a cadence, and a threshold crossing surfaces in the owner's briefing.
+- **OPS-21** Monthly run cost is attributed per service, reviewed on a cadence, and a threshold crossing is a notification in the owner's briefing: the alarm exists, never as a setting, and it never refuses or stops a run (owner ruling 2026-10-20).
 - **OPS-22** Every service declares its resource ceiling (memory, CPU, disk, concurrency) and what happens at the ceiling: refuse, queue, shed, or scale per the ladder trigger (ARCH-24).

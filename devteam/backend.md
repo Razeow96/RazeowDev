@@ -23,7 +23,7 @@ Type: Law · loads when the task writes server-side logic: endpoints, query code
 ## 3 · Async & consumers
 
 - **BE-18** Every externally triggered handler (webhook, queue, retry) dedups on the event or request id through its own seen-log; two consumers never share one.
-- **BE-10** An account- or config-level fault halts all dispatch, a transient fault releases the item for retry, a per-item fault fails that item alone, and auto-resume runs only where the probe exercises the broken path.
+- **BE-10** An account-level fault halts all dispatch, a transient fault releases the item for retry and a per-item fault fails that item alone; a bad setting stops only what its board row approves — each `config` row on the data schema carries its fault radius (the one item · its campaign · the whole run), proposed to the owner and approved on the board case by case (DRAW-53), and a radius not on the board is never the whole run; auto-resume runs only where the probe exercises the broken path (owner ruling 2026-10-20).
 - **BE-11** Work that died past a possible side effect goes to failed or needs_human, never back to queued; a failed report after success is retried once, then parked loudly, never re-done.
 - **BE-13** A declared miss is a result that walks on and a transport error throws; on a no-retry path: catch, dead-letter, log ERROR and answer 200 with an error flag, throwing if the dead-letter itself fails; a failed consumer releases its seen-log claim.
 
@@ -33,7 +33,7 @@ Type: Law · loads when the task writes server-side logic: endpoints, query code
 - **BE-8** Unknown input is a 400 (except on no-retry paths, BE-13): an unrecognised mode, action or enum is a named failure, never a fall-through to a default that does real work; a sentinel is a marker, never a real value; partitions are exhaustive.
 - **BE-9** Zero output is never `ok`: a run under target logs WARN, shows on the admin and states its counts.
 - **BE-12** Resources are acquired inside the try, dead cached resources evict themselves, loops carry seen-guards, and work is marked at dispatch, not at plan time.
-- **BE-33** Every guard implements the failure direction the architect declared (ARCH-18), closed by default: a guard on money, quota, credentials or capacity fails closed; a quality-only guard may fail open but must alarm; radius and direction are the two axes every error path declares.
+- **BE-33** Every guard implements the failure direction the architect declared (ARCH-18): only money (the spend stop) and send safety (suppression and do-not-contact) fail closed and may stop a run, and a missing credential stops it because nothing runs without it; a quota or capacity limit stops only the one item, logs it and sends the owner a notification, never a cap setting and never a run stop; a quality-only guard may fail open but must notify; radius and direction are the two axes every error path declares (owner ruling 2026-10-20).
 
 ## 5 · Observability
 
@@ -44,7 +44,7 @@ Type: Law · loads when the task writes server-side logic: endpoints, query code
 - **BE-32** The loop shape matches the architect's declared logic pattern (ARCH-31); a pattern that does not fit the real judgment structure is pushed back with the reason before the loop is written, and a build-time discovery goes back through the lead (LEAD-30) as a named pattern change, never a quiet reshape.
 - **BE-29** A helper is extracted at the second real use (first inline, second extract or flag as a watch item, third must), never at an imagined one (global card §4, over-engineering).
 - **BE-30** Code is promoted to shared only when at least two subdomains use the same behavior, the piece is pure or plumbing with zero domain knowledge, and it has one home and one import path; layers run entry or worker, then domain adapter, then shared services, dependencies pointing down only.
-- **BE-31** The review checklist: composed from the kit (BE-24), every branch returns or raises, config read never contained, pure logic testable without infra (TEST-1), ids carried never re-minted, every literal owned by a constant or config, one home per behavior.
+- **BE-31** The review checklist: composed from the kit (BE-24), every branch returns or raises, config read never contained, pure logic testable without infra (TEST-1), ids carried never re-minted, one home per behavior.
 - **BE-34** [review] Before writing any function, check or helper, read the module's code index rows and grep the kit, then reuse, extend, create in that order (the DB-13 order applied to code); a function duplicating a behavior a row already provides is a defect, and every file touched gets its code index row rewritten in the same edit (FILE-8). A fix or a debug step edits the existing file, script, rule or document in place; it never adds a second file, script, rule or document beside it (owner ruling 2026-10-19: "do not stack up codes, files, scripts, md files, rules — only edit, fix, replace").
 
 ## 7 · The kit & state
@@ -54,4 +54,4 @@ Type: Law · loads when the task writes server-side logic: endpoints, query code
 - **BE-14** The store is the only state: every status change is written when it happens, live state is re-read before each unit of work, orphaned in-flight rows requeue at boot, and any in-memory exception is documented with its fallback.
 - **BE-15** One thin wrapper per external system carries all its calls, and every log line carries the id spine.
 - **BE-16** Per-platform difference lives in declared adapters and field maps that normalize to one common record; shared code never branches per site (DRAW-13).
-- **BE-17** Config is data the code reads, never contains: catalog entries, thresholds, allowlists, selectors and per-source headers live in tables or JSON, and a knob is declared in the same pass as the code that reads it (MGR-12).
+- **BE-17** The approved data schema is the closed list of settings (DRAW-53): a value lives in a table, sheet or JSON as a setting only when the board draws it as a `config` row, every other number stays in code, and a builder who needs a setting the board lacks stops and reports it (LEAD-30) so the lead proposes it to the owner with its purpose for board approval before it is built (owner ruling 2026-10-20).

@@ -4,7 +4,7 @@ Type: Law · loads when the task touches auth, secrets, input from outside the p
 
 ## 1 · Untrusted input
 
-- **SEC-1** Everything crossing a trust boundary, our own worker and an LLM's answer included, is untrusted and validated there: fail closed, coerce never trust, allowlist never denylist, path-scope any caller-named path to its own tenant prefix, validate on both sides of a network hop, and cap by refusing, never silently truncating.
+- **SEC-1** Everything crossing a trust boundary, our own worker and an LLM's answer included, is untrusted and validated there: fail closed, coerce never trust, allowlist never denylist, path-scope any caller-named path to its own tenant prefix, validate on both sides of a network hop, and cap outside input by refusing, never silently truncating — the cap applies to outside input only, never to internal batch sizes or loops (owner ruling 2026-10-20).
 - **SEC-13** The server re-validates every field it requires (presence, type, range, allowed values) and fails closed on any miss; client validation is for UX only and is never the gate.
 - **SEC-2** Untrusted strings never reach markup: DB-sourced or user text renders via textContent or escape, never innerHTML or raw interpolation, identifier charsets are allowlisted and control chars are stripped from header-bound fields.
 - **SEC-23** An upload passes only when its extension is on the allowlist and its magic bytes match the claimed type, and it is size-capped, streamed in memory, never written to disk, never executed and never served from a path the uploader controls.

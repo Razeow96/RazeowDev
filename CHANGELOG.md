@@ -2,6 +2,10 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-20 · 1
+- 2026-10-20 · Web team: group messages read on a phone (owner ruling 2026-10-20): date on top, spacing, numbered points, one green or red dot (WEB-18); notice layout in the Telegram UI design
+- 2026-10-19 · Telegram UI design: the refused notice names the failed step and the reason (owner ruling 2026-10-19)
+- 2026-10-19 · article-image skill: the stock pick call carries the same query and the alt text the kit needs, through the door
 - 2026-10-19 · Credential perimeter: Pexels and Bing Webmaster keys set on the broker 2026-10-19
 - 2026-10-19 · Web team scripts: qc_check allowed through the wrapper; content_humanize does leverage→use; content_verify counts 'In <year>,' as a temporal claim; dataforseo_costs fails closed on an unreadable price table (production script proof 2026-10-19)
 - 2026-10-19 · seo-dataforseo skill: in a seat turn there are no MCP tools — stored pulls and the price script only (production skill proof 2026-10-19)
