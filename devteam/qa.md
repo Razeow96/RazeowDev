@@ -26,6 +26,7 @@ Type: Law · loads whenever a claim is about to be made: "it works", "it's conne
 - **QA-9** Judge the design's declared delivery metrics (ARCH-28: p95 latency, throughput, error rate, cost per run, memory or payload ceiling) on the tester's measured numbers (TEST-18) before Done, reported with the functional evidence; an unmeasured metric is unmet, and an undeclared one is a design gap sent back, never a pass.
 - **QA-11** Verify the infra, caching, degradation and security requirements as documented, never assumed (the documented-controls sweep, five cross-seat items: `qa-reference.md`).
 - **QA-14** Every failure path in the failure map produces its stated signal, fail direction and blast radius (ARCH-18/29 · BE-33), errors carry the human-readable envelope (BE-28), and nothing fails silently (BE-7/BE-9), tested against the documentation.
+- **QA-25** Before Done, every new or changed alarm, job or failure path is broken on purpose against the live service: QA shows its red notice arrives on the owner's surface within the drawn time, and that a slow but healthy run stays quiet; an alarm never fired for real is unproven (owner ruling 2026-10-21).
 - **QA-6** Done requires the runtime proof and, for every setting the approved data schema draws (DRAW-53), a lifecycle a human can create, edit and disable from a surface; a feature with no drawn setting needs none (owner ruling 2026-10-20).
 
 ## 4 · Gate 4 — it was tested to the plan's depth
