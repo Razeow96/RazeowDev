@@ -53,3 +53,15 @@ Type: Law · loads when the task provisions, deploys, restarts, schedules, super
 
 - **OPS-21** Monthly run cost is attributed per service, reviewed on a cadence, and a threshold crossing is a notification in the owner's briefing: the alarm exists, never as a setting, and it never refuses or stops a run (owner ruling 2026-10-20).
 - **OPS-22** Every service declares its resource ceiling (memory, CPU, disk, concurrency) and what happens at the ceiling: refuse, queue, shed, or scale per the ladder trigger (ARCH-24).
+
+## 9 · Servers (VPS): access & hardening
+
+- **OPS-29** Every server (VPS) is installed, hardened, changed and patched by the DevOps seat: the operator dispatches it with a brief naming the server, the change and the proof; a server change is never done inline by another seat (owner ruling 2026-10-26).
+- **OPS-30** A server's only doors are SSH and the Cloudflare tunnel: firewall default deny inbound, the one open inbound port is SSH on a non-default high port, every app listens on 127.0.0.1 and is published only through the tunnel; no other port is ever opened (owner ruling 2026-10-26).
+- **OPS-31** SSH is key-only from the first boot: `PasswordAuthentication no`, `KbdInteractiveAuthentication no`, `PermitRootLogin prohibit-password`, `MaxAuthTries 3`, a fail2ban jail on the SSH port watching the log that actually records the logins; a port move keeps the old port open until a key login on the new port is proven, then closes it in the service and the firewall (owner ruling 2026-10-26).
+- **OPS-32** No default survives an install: every installed service gets its default port bound to 127.0.0.1, its default or admin account replaced by a generated owner login before it is reachable from outside, and its default site or page removed (owner ruling 2026-10-26).
+- **OPS-33** Each app on a server has its own login, its own database role and database, reached only from 127.0.0.1 over an encrypted password login; every other database login is rejected.
+- **OPS-34** Every server runs automatic security updates and the provider's malware scanner, and backs up each app's database and key file nightly, 14 days kept.
+- **OPS-35** Server secrets live only in locked key files readable by the owning service's login (mode 600 or 640), never in a repo, a log line or a command's arguments; the laptop `.env` is the master copy.
+- **OPS-36** After every server change the seat proves it from outside the server: only the SSH port answers, a key login works, a password login is refused, and each tunnel address refuses a request without its key.
+- **OPS-37** Each server has one access record: address, SSH port, login, key file and the provider panel's browser console as the lock-out fallback, kept in the laptop's `~/.ssh/config` and the server's README.
