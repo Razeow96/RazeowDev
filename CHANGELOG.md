@@ -2,6 +2,8 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-26 · d
+- 2026-10-22 · yea
 - 2026-10-21 · 2026-10-21
 - 2026-10-20 · 1
 - 2026-10-20 · Web team: group messages read on a phone (owner ruling 2026-10-20): date on top, spacing, numbered points, one green or red dot (WEB-18); notice layout in the Telegram UI design

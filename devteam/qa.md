@@ -11,7 +11,7 @@ Type: Law · loads whenever a claim is about to be made: "it works", "it's conne
 - **QA-1** Verify the payload, never the proxy signal (a count, a status code, a green run, a subagent's summary): read the actual record's keys and state which claim you are making.
 - **QA-2** Only a live call describes the account: docs describe the API (BE-23), caps are re-verified per account, and mocks prove the shape while only the live run proves the vendor contract.
 - **QA-3** Anything spanning two or more domains or components has its id parity verified across the hop before a handoff is wired (the end-to-end proven run is LIN-19).
-- **QA-4** After deploy, open the real URL, watch the request return 200 and read the artifact (view the render, screenshot the diagram) before calling it live (CFW-1).
+- **QA-4** After deploy, the release suite's smoke result (REL-9) is the liveness evidence; QA opens the real URL and reads the artifact (view the render, screenshot the diagram) only for what the suite does not read, before calling it live (CFW-1).
 - **QA-20** Before Done on anything touching shared code, schema, config or a shared component, exercise the existing flows that depend on it, the consumers the contract card and laneindex name (ARCH-30/MGR-10), with shared surfaces (the kit, the component library, a table with multiple readers, a changed event payload) checked explicitly.
 
 ## 2 · Gate 2 — it matches the design
@@ -32,11 +32,11 @@ Type: Law · loads whenever a claim is about to be made: "it works", "it's conne
 ## 4 · Gate 4 — it was tested to the plan's depth
 
 - **QA-16** Judge testing against the project's test plan (TEST-20), with QA-18 as the pre-exposure gate, and record every deviation as accepted risk (LEAD-29), never discovered afterwards.
-- **QA-23** QA is the only reviewer seat (owner ruling 2026-10-19), and before the proven run it compares the test seats' results with the built code and the brief: it re-runs the tester's and the security tester's suites itself on the commit under review, checks that every expected result in the brief (LEAD-34) has a test asserting that exact metric and that every test has its red run on record (TEST-24 · SEC-40), checks that no test was weakened, skipped or edited without a brief revision since the red run, and names any brief line with no test, any test with no brief line, and any result the code produces that no test reads; only then does it run the proven run against the live services (QA-1).
+- **QA-23** QA is the only reviewer seat (owner ruling 2026-10-19), and before the proven run it compares the test seats' results with the built code and the brief: it re-runs the tester's and the security tester's suites itself on the commit under review, reads the release tester's run of the project's release suite on the commit under review, dated within the last day (REL-9, green required, owner ruling 2026-10-23), checks that every expected result in the brief (LEAD-34) has a test asserting that exact metric and that every test has its red run on record (TEST-24 · SEC-40), checks that no test was weakened, skipped or edited without a brief revision since the red run, and names any brief line with no test, any test with no brief line, and any result the code produces that no test reads; only then does it run the proven run against the live services (QA-1).
 
 ## 5 · Gate 5 — readiness & reporting
 
-- **QA-18** Before first exposure QA issues an explicit go or no-go stating what is ready, what is not and what was accepted as risk, with evidence attached to every "ready" (the green checklist: `qa-reference.md`).
+- **QA-18** Before first exposure QA issues an explicit go or no-go stating what is ready, what is not and what was accepted as risk, with evidence attached to every "ready" and the release suite green against the live surfaces as a required item (REL-9) (the green checklist: `qa-reference.md`).
 - **QA-15** Every finding is addressed and actionable, so the reader can verify and act on it without a follow-up question (the six fields, ordering, blocks-Done flag: `qa-reference.md`).
 - **QA-5** "VERIFIED" carries a date and a sample size, and never generalizes from a null.
 - **QA-7** Prove the fix, name what is still unproven, label OBSERVED and INFERRED in every finding, and when evidence is gone say so and fix the evidence gap in the same pass.

@@ -4,7 +4,7 @@ Type: Law · pulled on dispatch of the architect or when the main loop designs a
 
 ## 1 · Interrogate & frame
 
-- **ARCH-28** Design starts by interrogating the requirement until each domain's goal is unambiguous (global card §4); each domain then carries its stated goal, its technical delivery metrics (throughput, error rate, cost per run, latency) and its performance targets, which QA takes from the design (QA-17), never business metrics or revenue, which are the manager's layer.
+- **ARCH-28** Design starts by interrogating the requirement until each domain's goal is unambiguous (global card §4) and each feature's inputs are named: what varies per call, run, client or project is declared as an argument, payload key or `config` row, and the case discussed is written as the first example of those inputs, never as the feature's definition (owner ruling 2026-10-22); each domain then carries its stated goal, its technical delivery metrics (throughput, error rate, cost per run, latency) and its performance targets, which QA takes from the design (QA-17), never business metrics or revenue, which are the manager's layer.
 
 ## 2 · Choose the architecture
 
@@ -45,3 +45,4 @@ Reference: `architect-topology.md` (ARCH-22 · ARCH-12 · ARCH-23 · ARCH-32 · 
 - **ARCH-26** The architect mints a new domain, module or feature's §5 code in the same pass as its approval (next number in the parent per the format law, folder and files named by it, row written into `repolaneindex.md`, global card §5) after one collision check against the registry and live Linear titles (a check against our own ledger, never a permission step), and an unaddressed shipped surface is a design defect.
 - **ARCH-30** Every domain doc carries a domain contract card (block template: `rsot/knowledge/architect-reference.md`, read when filling it), written for human review first and updated on any change to what the domain consumes, owns or emits (DRAW-7).
 - **ARCH-16** The design is documented as it is approved: the system design board (DRAW-37), the spec in the module's `sot/` (project-wide: `msot/`), the `repolaneindex` row, and an ADR in the module's `sot/` for any decision with a real trade-off (chosen over what · why · expected outcome), which the Linear issue links and never replaces (LIN-16, MGR-11, FILE-12).
+- **ARCH-37** Five-data cap on the CDT: an event body holds at most five keys by default, id and timestamp counted; the sixth and every further key is not drawn until the owner approves it on a review table (`dataset · data · why · from · destination · function`, one row per key) carried in the design package; an unapproved key is cut, never carried as yellow, and the cap is per event, never pooled across a domain (owner ruling 2026-10-22).

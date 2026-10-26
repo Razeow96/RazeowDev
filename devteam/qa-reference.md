@@ -15,6 +15,7 @@ Type: Law (reference checklists for `qa.md`) · pulled through rulesindex when r
 Every item green before first exposure:
 
 - every gate green (Gates 1–4)
+- release suite green against the live surfaces (REL-9)
 - the declared metrics measured with actual numbers (QA-17/QA-9)
 - **fallbacks and degradation proven by exercising them**, not by reading the code (OPS-20 · SEC-22's rotation drill · OPS-14's restore)
 - the rollback path confirmed (OPS-18)
