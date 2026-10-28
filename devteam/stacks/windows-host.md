@@ -1,6 +1,6 @@
 # Dev team — Stack pack: Windows host (WIN)
 
-Type: Law · stack pack (LEAD-4) that every repo on this machine declares, because the Windows / PowerShell environment is always relevant when coding here; platform hazards only, the general coding law is in the seats, and this pack is the destination for globalclaude §12's dev-execution rules. Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/stacks-rule-rationale.md` (Windows host section), same rule IDs, open when a rule's judgment is in play.
+Type: Law · stack pack (LEAD-43) that every repo on this machine declares, because the Windows / PowerShell environment is always relevant when coding here; platform hazards only, the general coding law is in the seats, and this pack is the destination for globalclaude §12's dev-execution rules. Update: one rule = one line; replace the line and delete the superseded one in the same edit. The reasoning and the incident behind each rule: `rsot/knowledge/stacks-rule-rationale.md` (Windows host section), same rule IDs, open when a rule's judgment is in play.
 
 ## 1 · Shells & commands
 
@@ -17,5 +17,5 @@ Type: Law · stack pack (LEAD-4) that every repo on this machine declares, becau
 
 ## 3 · Secrets on Windows
 
-- **WIN-7** A secret set via CLI is **pasted at the interactive prompt**, never piped (SEC-4), as SEC-5's command form.
-- **WIN-8** SQL carrying a `$`-bearing literal (a hash) goes through `--file=x.sql` written as a single-quoted here-string (`@'...'@`), never `--command "...$..."` (SEC-5).
+- **WIN-7** A secret set via CLI is **pasted at the interactive prompt**, never piped (SEC-4), as SEC-54's command form.
+- **WIN-8** SQL carrying a `$`-bearing literal (a hash) goes through `--file=x.sql` written as a single-quoted here-string (`@'...'@`), never `--command "...$..."` (SEC-54).

@@ -38,7 +38,7 @@ The boot runs every check below, repairs what the line names itself and reports 
 
 ## BOOT-4 · Junction repair (recovery)
 
-An `orgrules/`, skill folder or agents folder that is missing or not a Junction at boot or dispatch is deleted (first: OPS-16) and recreated as a Junction per `rsot/knowledge/junction-repair.md`.
+An `orgrules/`, skill folder or agents folder that is missing or not a Junction at boot or dispatch is deleted (first: the runtime check, devops knowledge file §4) and recreated as a Junction per `rsot/knowledge/junction-repair.md`.
 
 ## BOOT-5 · Skills roster
 
