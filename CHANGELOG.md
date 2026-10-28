@@ -2,6 +2,7 @@
 
 One line per rule change, newest first. Generated from upstream history.
 
+- 2026-10-28 · 2026-10-28
 - 2026-10-28 · update
 - 2026-10-28 · Update qa.md
 - 2026-10-28 · dev tea update
